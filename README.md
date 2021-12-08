@@ -7,7 +7,8 @@
 <!-- badges: end -->
 
 A collection of clinical research organization (CRO) miscellaneous
-functions.
+functions developed for [The Prostate Cancer Clinical Trials Consortium
+(PCCTC)](http://pcctc.org/).
 
 ## Installation
 
