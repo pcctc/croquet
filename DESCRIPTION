@@ -1,20 +1,26 @@
 Package: croquet
 Title: Miscellaneous Operations For PCCTC
 Version: 0.0.0.9000
-Authors@R: 
-    c(person(given = "Shannon",
-             family = "Pileggi",
-             role = c("aut", "cre"),
-             email = "pileggis@mskcc.org"),
-      person(given = "Travis",
-             family = "Gerke",
-             role = "aut",
-             email = "gerket@mskcc.org"))           
-Description: Miscellaneous operations for PCCTC, a Clinical Research 
-  Organization (CRO).
+Authors@R: c(
+    person("Shannon", "Pileggi", , "pileggis@mskcc.org", role = c("aut", "cre")),
+    person("Travis", "Gerke", , "gerket@mskcc.org", role = "aut")
+  )
+Description: Miscellaneous operations for PCCTC, a Clinical Research
+    Organization (CRO).
 License: MIT + file LICENSE
+URL: https://github.com/pcctc/croquet
+BugReports: https://github.com/pcctc/croquet/issues
+Imports: 
+    dplyr,
+    labelled,
+    magrittr,
+    openxlsx,
+    purrr,
+    rlang (>= 0.4.11),
+    tibble,
+    tidyr
+Suggests: 
+    roxygen2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-URL: https://github.com/pcctc/croquet
-BugReports: https://github.com/pcctc/croquet/issues
