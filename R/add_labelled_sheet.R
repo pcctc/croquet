@@ -5,9 +5,9 @@
 #' options to sheet with the openxlsx::add functions after executed.
 #'
 #' @param data labelled data to add to sheet. can accept named list or data frame.
-#' @param wb workbook name
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
+#' @param wrkbk workbook name, defaults to wb
 #'
 #' @return a workbook object
 #' @export
@@ -15,6 +15,7 @@
 #' @examples
 #' \dontrun{
 #' library(openxlsx)
+#' library(croquet)
 #' options("openxlsx.dateFormat" = "yyyy-mm-dd")
 #'
 #' # example 1: single data frame ----
@@ -30,7 +31,7 @@
 #'   )
 #' wb <- createWorkbook()
 #' add_labelled_sheet(dat1)
-#' add_labelled_sheet(dat1, "example sheet")
+#' add_labelled_sheet(dat1, sheet_name = "example sheet")
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'
 #'
@@ -52,7 +53,7 @@
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 #'
-add_labelled_sheet <- function(data, wb, sheet_name = NULL){
+add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
 
   # character name of input data
   data_chr <- rlang::as_label(rlang::ensym(data))
@@ -61,8 +62,8 @@ add_labelled_sheet <- function(data, wb, sheet_name = NULL){
   if(is.null(sheet_name)) sheet_name <- data_chr
 
   # exporting when list of data frames supplied
-  if("list" %in% class(data))   purrr::imap(data, ~labelled_sheet(.x, .y, wb = wb))
+  if("list" %in% class(data))   purrr::imap(data, ~labelled_sheet(.x, .y, wrkbk))
 
   # exporting when single data frame supplied
-  if("data.frame" %in% class(data))  labelled_sheet(data, wb, sheet_name)
+  if("data.frame" %in% class(data))  labelled_sheet(data, sheet_name, wrkbk)
 }

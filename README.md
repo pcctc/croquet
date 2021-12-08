@@ -40,6 +40,7 @@ digestible.
 ``` r
 library(croquet)
 library(openxlsx)
+options("openxlsx.dateFormat" = "yyyy-mm-dd")
 ```
 
 ### Example data
@@ -80,9 +81,7 @@ add_labelled_sheet(dat1)
 # you can rename sheet to something more meaningful
 add_labelled_sheet(dat1, "example sheet")
 
-#
 saveWorkbook(wb, "check-wb-1.xlsx")
-## basic example code
 ```
 
 ### Export multiple sheets
@@ -99,3 +98,5 @@ add_labelled_sheet(out)
 
 saveWorkbook(wb, "check-wb-2.xlsx")
 ```
+
+<img src="man/figures/check-wb-2.PNG" title="Shows two tabs named dat1 and dat2. Row 1 has a light gray background and dark text; row 2 has a black background and white text." alt="Shows two tabs named dat1 and dat2. Row 1 has a light gray background and dark text; row 2 has a black background and white text." width="100%" />

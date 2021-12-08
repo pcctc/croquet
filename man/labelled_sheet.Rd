@@ -4,15 +4,15 @@
 \alias{labelled_sheet}
 \title{A hidden function to add labelled data sheet to an excel workbook through openxlsx}
 \usage{
-labelled_sheet(data, wb = wb, sheet_name = NULL)
+labelled_sheet(data, sheet_name = NULL, wrkbk = wb)
 }
 \arguments{
 \item{data}{labelled data to add to sheet}
 
-\item{wb}{workbook name}
-
 \item{sheet_name}{optional sheet name; if none provided, sheet will be assigned name
 of input data set}
+
+\item{wrkbk}{workbook name, defaults to wb}
 }
 \value{
 not sure... a workbook object or something
@@ -36,7 +36,7 @@ dat_labelled <- tibble::tibble(
     var_3 = "Variable 3 (date)"
   )
 wb <- createWorkbook()
-labelled_sheet(dat_labelled, "example sheet")
+labelled_sheet(dat_labelled, sheet_name = "example sheet")
 saveWorkbook(wb, "checkwb.xlsx")
 }
 }

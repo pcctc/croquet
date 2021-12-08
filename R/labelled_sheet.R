@@ -4,9 +4,9 @@
 #' after executed.
 #'
 #' @param data labelled data to add to sheet
-#' @param wb workbook name
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
+#' @param wrkbk workbook name, defaults to wb
 #'
 #' @return not sure... a workbook object or something
 #'
@@ -25,10 +25,10 @@
 #'     var_3 = "Variable 3 (date)"
 #'   )
 #' wb <- createWorkbook()
-#' labelled_sheet(dat_labelled, "example sheet")
+#' labelled_sheet(dat_labelled, sheet_name = "example sheet")
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
-labelled_sheet <- function(data, wb = wb, sheet_name = NULL){
+labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
 
   # ----------------------------------------------------------------------------
   # global settings and preferences - where should these go?
@@ -55,21 +55,21 @@ labelled_sheet <- function(data, wb = wb, sheet_name = NULL){
   var_labels <- retrieve_labels(data)
 
   # initialize
-  openxlsx::addWorksheet(wb, sheetName = sheet_name)
+  openxlsx::addWorksheet(wrkbk, sheetName = sheet_name)
 
   # export data without column names starting at row 3
-  openxlsx::writeData(wb, sheet = sheet_name, x = data, colNames = FALSE, startRow = 3)
+  openxlsx::writeData(wrkbk, sheet = sheet_name, x = data, colNames = FALSE, startRow = 3)
 
   # export variable names and labels to rows 1 and 2
-  openxlsx::writeData(wb, sheet = sheet_name, x = var_labels, colNames = TRUE, headerStyle = hs1)
+  openxlsx::writeData(wrkbk, sheet = sheet_name, x = var_labels, colNames = TRUE, headerStyle = hs1)
 
   # add freeze pane on rows 1 and 2
-  openxlsx::freezePane(wb, sheet = sheet_name, firstActiveRow = 3)
+  openxlsx::freezePane(wrkbk, sheet = sheet_name, firstActiveRow = 3)
 
   # add dark styling to variable labels
-  openxlsx::addStyle(wb, sheet = sheet_name, style = hs2, rows = 2, cols = 1:length(var_labels))
+  openxlsx::addStyle(wrkbk, sheet = sheet_name, style = hs2, rows = 2, cols = 1:length(var_labels))
 
   # add filter to variable labels
-  openxlsx::addFilter(wb, sheet = sheet_name, rows = 2, cols = 1:length(var_labels))
+  openxlsx::addFilter(wrkbk, sheet = sheet_name, rows = 2, cols = 1:length(var_labels))
 
 }

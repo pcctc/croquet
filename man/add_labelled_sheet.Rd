@@ -2,29 +2,30 @@
 % Please edit documentation in R/add_labelled_sheet.R
 \name{add_labelled_sheet}
 \alias{add_labelled_sheet}
-\title{Adds a sheet to excel with variable names on row 1, variable labels on row 2,
-freeze panes, and filters.}
+\title{Adds a sheet to an excel workbook with with both variable names and labels.}
 \usage{
-add_labelled_sheet(data, wb, sheet_name = NULL)
+add_labelled_sheet(data, sheet_name = NULL, wrkbk = wb)
 }
 \arguments{
 \item{data}{labelled data to add to sheet. can accept named list or data frame.}
 
-\item{wb}{workbook name}
-
 \item{sheet_name}{optional sheet name; if none provided, sheet will be assigned name
 of input data set}
+
+\item{wrkbk}{workbook name, defaults to wb}
 }
 \value{
 a workbook object
 }
 \description{
-You can add additional styling options to sheet with the openxlsx::add functions
-after executed.
+Row 1 contains variable names; row 2 contains variable labels, freeze panes,
+and filters. Header styling is applied.  You can add additional styling
+options to sheet with the openxlsx::add functions after executed.
 }
 \examples{
 \dontrun{
 library(openxlsx)
+library(croquet)
 options("openxlsx.dateFormat" = "yyyy-mm-dd")
 
 # example 1: single data frame ----
@@ -40,7 +41,7 @@ dat1 <- tibble::tibble(
   )
 wb <- createWorkbook()
 add_labelled_sheet(dat1)
-add_labelled_sheet(dat1, "example sheet")
+add_labelled_sheet(dat1, sheet_name = "example sheet")
 saveWorkbook(wb, "checkwb.xlsx")
 
 
