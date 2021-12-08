@@ -1,8 +1,8 @@
-#' Adds a sheet to excel with variable names on row 1, variable labels on row 2,
-#' freeze panes, and filters.
+#' Adds a sheet to an excel workbook with with both variable names and labels.
 #'
-#' You can add additional styling options to sheet with the openxlsx::add functions
-#' after executed.
+#' Row 1 contains variable names; row 2 contains variable labels, freeze panes,
+#' and filters. Header styling is applied.  You can add additional styling
+#' options to sheet with the openxlsx::add functions after executed.
 #'
 #' @param data labelled data to add to sheet. can accept named list or data frame.
 #' @param wb workbook name

@@ -28,18 +28,74 @@ You can install the development version of croquet from
 devtools::install_github("pcctc/croquet")
 ```
 
-## Exporting labelled data
+## Exporting labelled data to excel
 
-This is a basic example which shows you how to solve a common problem:
+Brief variable names are useful for coding, but might not provide
+sufficient context for collaborators. Here, we add variable labels data
+and export those labels to an excel sheet to make content more readily
+digestible.
+
+### Libraries
 
 ``` r
 library(croquet)
+library(openxlsx)
+```
+
+### Example data
+
+``` r
+dat1 <- tibble::tibble(
+  var_1 = 1:3,
+  var_2 = LETTERS[1:3],
+  var_3 = Sys.Date() - 0:2
+  ) %>%
+  labelled::set_variable_labels(
+    var_1 = "Variable 1 (numeric)",
+    var_2 = "Variable 2 (character)",
+    var_3 = "Variable 3 (date)"
+  )
+
+dat2 <- tibble::tibble(
+  var_1 = 4:6,
+  var_2 = LETTERS[4:6],
+  var_3 = Sys.Date() - 0:2
+  ) %>%
+  labelled::set_variable_labels(
+    var_1 = "Variable 1 (numeric)",
+    var_2 = "Variable 2 (character)",
+    var_3 = "Variable 3 (date)"
+  )
+```
+
+### Export single sheet
+
+``` r
+# initialize workbook
+wb <- createWorkbook()
+
+# default settings name sheet by name of input data
+add_labelled_sheet(dat1)
+
+# you can rename sheet to something more meaningful
+add_labelled_sheet(dat1, "example sheet")
+
+#
+saveWorkbook(wb, "check-wb-1.xlsx")
 ## basic example code
 ```
 
-## Code of Conduct
+### Export multiple sheets
 
-Please note that the gtreg project is released with a [Contributor Code
-of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+``` r
+# create named list
+out <- tibble::lst(dat1, dat2)
+
+# initialize workbook
+wb <- createWorkbook()
+
+# create labelled sheets from all input data
+add_labelled_sheet(out)
+
+saveWorkbook(wb, "check-wb-2.xlsx")
+```
