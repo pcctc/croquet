@@ -12,6 +12,9 @@ functions developed for [The Prostate Cancer Clinical Trials Consortium
 
 ## Installation
 
+⚠️ This package is under active development! Feedback is welcome,
+consistency is not yet promised.
+
 You can install the development version of croquet from
 [GitHub](https://github.com/) with:
 
