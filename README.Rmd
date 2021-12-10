@@ -120,6 +120,24 @@ knitr::include_graphics("man/figures/check-wb-2.PNG")
 ```
 
 
+## Importing labelled data from excel
+
+Needs more documentation!
+
+This imports a single sheet that assumes variables names are in row 1 and variable
+labels are row 2. You can optionally specify a regex expression for `date_detect` 
+to identify variables that should be explicitly imported as a date.
+
+```{r import-labelled-sheet, eval=FALSE}
+dat <- read_labelled_sheet(
+  path = here::here(path, dsn1),
+  sheet = "ae_listings",
+  date_detect = "cyc1_visdat|cyc2_visdat"
+)
+```
+
+
+
 ```{r, echo = FALSE}
 knitr::knit_exit()
 ```

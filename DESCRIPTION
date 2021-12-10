@@ -16,7 +16,9 @@ Imports:
     magrittr,
     openxlsx,
     purrr,
+    readxl,
     rlang (>= 0.4.11),
+    stringr,
     tibble,
     tidyr
 Suggests: 

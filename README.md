@@ -103,3 +103,20 @@ saveWorkbook(wb, "check-wb-2.xlsx")
 ```
 
 <img src="man/figures/check-wb-2.PNG" title="Shows two tabs named dat1 and dat2. Row 1 has a light gray background and dark text; row 2 has a black background and white text." alt="Shows two tabs named dat1 and dat2. Row 1 has a light gray background and dark text; row 2 has a black background and white text." width="100%" />
+
+## Importing labelled data from excel
+
+Needs more documentation!
+
+This imports a single sheet that assumes variables names are in row 1
+and variable labels are row 2. You can optionally specify a regex
+expression for `date_detect` to identify variables that should be
+explicitly imported as a date.
+
+``` r
+dat <- read_labelled_sheet(
+  path = here::here(path, dsn1),
+  sheet = "ae_listings",
+  date_detect = "cyc1_visdat|cyc2_visdat"
+)
+```
