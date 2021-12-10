@@ -40,7 +40,10 @@ digestible.
 ``` r
 library(croquet)
 library(openxlsx)
+
+# format all date and date time variables in the excel output 
 options("openxlsx.dateFormat" = "yyyy-mm-dd")
+options("openxlsx.datetimeFormat" = "yyyy-mm-dd")
 ```
 
 ### Example data
