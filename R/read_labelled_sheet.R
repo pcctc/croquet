@@ -32,7 +32,7 @@ read_labelled_sheet <- function(path, sheet, date_detect = NULL){
 
   # when date detect strings are specified
   if (!is.null(date_detect)) {
-    date_variables <- stringr::str_detect(dat_names, regex(date_detect))
+    date_variables <- stringr::str_detect(dat_names, stringr::regex(date_detect))
     variable_types <- ifelse(date_variables, "date", "guess")
   }
 
