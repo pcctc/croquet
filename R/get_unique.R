@@ -43,10 +43,11 @@ get_unique <- function(data, var, drop_na = TRUE, keep_fct_levels = TRUE){
 
   # check to see if variable is a factor and we want to return
   # all factor levels
-  if (inherits(data[["var"]], "factor") & keep_fct_levels) {
+  if (inherits(data[["var"]], "factor") && isTRUE(keep_fct_levels)) {
     values <- levels(data[["var"]])
     return(values)
   }
+
 
   # this should run if variable is not a factor, or if variable
   # is a factor but we only want factor levels observed in data to
