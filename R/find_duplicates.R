@@ -11,7 +11,7 @@
 #' y <- data.frame(subject = LETTERS[1:5])
 #' find_duplicates(x, subject)
 #' find_duplicates(y, subject)
-find_duplicates <- function(data, ids) {
+find_duplicates <- function(data, ids = NULL) {
 
   # convert id character string ----
   ids_chr <-
@@ -21,20 +21,15 @@ find_duplicates <- function(data, ids) {
       arg_name = "ids"
     )
 
-
-  # alert user if variable is not in data set ----
-  if (!(ids_chr %in% names(data))){
-    usethis::ui_stop("{ids_chr} is not in the data set.")
-  }
-
   # count & return duplicate observations
   data |>
-    dplyr::group_by(dplyr::across({{ids}}), .drop = FALSE) |>
+    dplyr::group_by(dplyr::across({{ids}})) |>
     dplyr::add_count(name = "num_obs") |>
     dplyr::ungroup() |>
     dplyr::filter(num_obs > 1) |>
-    dplyr::select({{ids}}, num_obs) |>
-    dplyr::distinct()
+    dplyr::select(dplyr::all_of(ids_chr), num_obs) |>
+    dplyr::distinct() |>
+    dplyr::arrange(num_obs)
 }
 
 
