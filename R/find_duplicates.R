@@ -33,3 +33,22 @@ find_duplicates <- function(data, ids = NULL) {
 }
 
 
+
+
+##' @inheritParams dplyr::count
+##' @export
+#find_duplicates <- function(x, ..., sort = FALSE, name = NULL) {
+#  # count & return duplicate observations
+#  dplyr::count(x = x, ..., sort = sort, name = name) |>
+#    dplyr::filter(!!rlang::sym(rlang::`%||%`(name, "n")) > 1L)
+#}
+#mtcars |>
+#  find_duplicates(cyl, mpg)
+##>   cyl  mpg n
+##> 1   4 22.8 2
+##> 2   4 30.4 2
+##> 3   6 21.0 2
+##> 4   8 10.4 2
+##> 5   8 15.2 2
+
+
