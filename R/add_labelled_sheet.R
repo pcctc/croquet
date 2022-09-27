@@ -1,13 +1,13 @@
 #' Adds a sheet to an excel workbook with with both variable names and labels.
 #'
-#' Row 1 contains variable names; row 2 contains variable labels, freeze panes,
+#' Row 1 contains variable labels; row 2 contains variable names, freeze panes,
 #' and filters. Header styling is applied.  You can add additional styling
 #' options to sheet with the openxlsx::add functions after executed.
 #'
 #' @param data labelled data to add to sheet. can accept named list or data frame.
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
-#' @param wrkbk workbook name, defaults to wb
+#' @param wrkbk workbook object, defaults to wb
 #'
 #' @return a workbook object
 #' @export

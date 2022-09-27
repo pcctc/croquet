@@ -8,11 +8,10 @@
 #' of input data set
 #' @param wrkbk workbook name, defaults to wb
 #'
-#' @return not sure... a workbook object or something
+#' @return a workbook object
 #'
 #' @examples
 #' \dontrun{
-#' # this doesnt seem to work consistently for me
 #' options("openxlsx.dateFormat" = "yyyy-mm-dd")
 #' dat_labelled <- tibble::tibble(
 #'   var_1 = 1:3,
@@ -25,7 +24,7 @@
 #'     var_3 = "Variable 3 (date)"
 #'   )
 #' wb <- createWorkbook()
-#' labelled_sheet(dat_labelled, sheet_name = "example sheet")
+#' wb <- labelled_sheet(dat_labelled, sheet_name = "example sheet", wrkbk = wb)
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
@@ -35,11 +34,8 @@ labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
   # global options for date formatting
   # options("openxlsx.dateFormat" = "yyyy-mm-dd")
 
-  # heading 1: light gray background, black text
-  hs1 <- openxlsx::createStyle(fontColour = "#000000", fgFill = "#F2F2F2", textDecoration = "Bold" )
-
-  # heading 2: black background, light gray text
-  hs2 <- openxlsx::createStyle(fontColour = "#F2F2F2", fgFill = "#000000", textDecoration = "Bold" )
+  # heading 1: Excel's "Explanatory Text" format
+  hs1 <- openxlsx::createStyle(fontColour = "#7F7F7F", textDecoration = "italic", wrapText = TRUE )
 
   # highlighting option
   #hl <- createStyle(fontColour = "#000000", fgFill = "#FFFFE0")
@@ -57,19 +53,18 @@ labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
   # initialize
   openxlsx::addWorksheet(wrkbk, sheetName = sheet_name)
 
-  # export data without column names starting at row 3
-  openxlsx::writeData(wrkbk, sheet = sheet_name, x = data, colNames = FALSE, startRow = 3)
+  # export data as an Excel-formatted Table starting at row 2
+  openxlsx::writeDataTable(wrkbk, sheet = sheet_name, x = data, colNames = TRUE,
+                           startRow = 2, withFilter=TRUE,
+                           tableStyle = "TableStyleLight8") # This table style is default white rows with dark headers
 
-  # export variable names and labels to rows 1 and 2
-  openxlsx::writeData(wrkbk, sheet = sheet_name, x = var_labels, colNames = TRUE, headerStyle = hs1)
+  # export labels to rows 1
+  openxlsx::writeData(wrkbk, sheet = sheet_name, x = var_labels, colNames = FALSE)
 
   # add freeze pane on rows 1 and 2
   openxlsx::freezePane(wrkbk, sheet = sheet_name, firstActiveRow = 3)
 
-  # add dark styling to variable labels
-  openxlsx::addStyle(wrkbk, sheet = sheet_name, style = hs2, rows = 2, cols = 1:length(var_labels))
-
-  # add filter to variable labels
-  openxlsx::addFilter(wrkbk, sheet = sheet_name, rows = 2, cols = 1:length(var_labels))
+  # add style to labels
+  openxlsx::addStyle(wrkbk, sheet = sheet_name, rows = 1, cols = 1:length(var_labels), style = hs1)
 
 }

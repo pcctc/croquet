@@ -15,7 +15,7 @@ of input data set}
 \item{wrkbk}{workbook name, defaults to wb}
 }
 \value{
-not sure... a workbook object or something
+a workbook object
 }
 \description{
 You can add additional styling options to sheet with the openxlsx::add functions
@@ -23,7 +23,6 @@ after executed.
 }
 \examples{
 \dontrun{
-# this doesnt seem to work consistently for me
 options("openxlsx.dateFormat" = "yyyy-mm-dd")
 dat_labelled <- tibble::tibble(
   var_1 = 1:3,
@@ -36,7 +35,7 @@ dat_labelled <- tibble::tibble(
     var_3 = "Variable 3 (date)"
   )
 wb <- createWorkbook()
-labelled_sheet(dat_labelled, sheet_name = "example sheet")
+wb <- labelled_sheet(dat_labelled, sheet_name = "example sheet", wrkbk = wb)
 saveWorkbook(wb, "checkwb.xlsx")
 }
 }
