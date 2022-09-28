@@ -12,13 +12,13 @@ add_labelled_sheet(data, sheet_name = NULL, wrkbk = wb)
 \item{sheet_name}{optional sheet name; if none provided, sheet will be assigned name
 of input data set}
 
-\item{wrkbk}{workbook name, defaults to wb}
+\item{wrkbk}{workbook object, defaults to wb}
 }
 \value{
 a workbook object
 }
 \description{
-Row 1 contains variable names; row 2 contains variable labels, freeze panes,
+Row 1 contains variable labels; row 2 contains variable names, freeze panes,
 and filters. Header styling is applied.  You can add additional styling
 options to sheet with the openxlsx::add functions after executed.
 }

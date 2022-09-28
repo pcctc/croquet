@@ -18,7 +18,7 @@ as dates}
 a tibble
 }
 \description{
-Assumes variable names are on row 1 and variable labels are on row 2.
+Assumes variable labels are on row 1 and variable names are on row 2.
 }
 \examples{
 \dontrun{
