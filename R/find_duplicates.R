@@ -18,12 +18,18 @@ find_duplicates <- function(data, id) {
   #  usethis::ui_stop("{id} is not in the data set.")
   #}
 
-  data |>
-    dplyr::group_by({{id}}) |>
-    dplyr::add_count() |>
-    dplyr::ungroup() |>
-    dplyr::filter(n > 1) |>
-    dplyr::select({{id}}, num_obs = n) |>
+  # data |>
+  #   dplyr::group_by({{id}}) |>
+  #   dplyr::add_count() |>
+  #   dplyr::ungroup() |>
+  #   dplyr::filter(n > 1) |>
+  #   dplyr::select({{id}}, num_obs = n) |>
+  #   dplyr::distinct()
+
+  data %>%
+    dplyr::add_count({{id}}, name = "n") %>%
+    dplyr::filter(n > 1) %>%
+    dplyr::select({{id}}, num_obs = n) %>%
     dplyr::distinct()
 }
 
