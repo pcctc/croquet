@@ -4,7 +4,7 @@
 \alias{add_labelled_sheet}
 \title{Adds a sheet to an excel workbook with with both variable names and labels.}
 \usage{
-add_labelled_sheet(data, sheet_name = NULL, wrkbk = wb)
+add_labelled_sheet(data, sheet_name = NULL, wrkbk = wb, start_row = 1L)
 }
 \arguments{
 \item{data}{labelled data to add to sheet. can accept named list or data frame.}
@@ -13,6 +13,8 @@ add_labelled_sheet(data, sheet_name = NULL, wrkbk = wb)
 of input data set}
 
 \item{wrkbk}{workbook object, defaults to wb}
+
+\item{start_row}{integer row position where Labels are placed, defaults to 1L}
 }
 \value{
 a workbook object

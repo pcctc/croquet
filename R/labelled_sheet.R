@@ -7,6 +7,7 @@
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
 #' @param wrkbk workbook name, defaults to wb
+#' @param start_row integer row position where the labels must be placed, `data` is placed at start_row+1, defaults to 1L
 #'
 #' @return a workbook object
 #'
@@ -27,7 +28,7 @@
 #' wb <- labelled_sheet(dat_labelled, sheet_name = "example sheet", wrkbk = wb)
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
-labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
+labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb, start_row = 1L){
 
   # ----------------------------------------------------------------------------
   # global settings and preferences - where should these go?
@@ -55,16 +56,16 @@ labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
 
   # export data as an Excel-formatted Table starting at row 2
   openxlsx::writeDataTable(wrkbk, sheet = sheet_name, x = data, colNames = TRUE,
-                           startRow = 2, withFilter=TRUE,
+                           startRow = start_row + 1, withFilter=TRUE,
                            tableStyle = "TableStyleLight8") # This table style is default white rows with dark headers
 
-  # export labels to rows 1
-  openxlsx::writeData(wrkbk, sheet = sheet_name, x = var_labels, colNames = FALSE)
+  # export labels to start_row
+  openxlsx::writeData(wrkbk, sheet = sheet_name, x = var_labels, colNames = FALSE, startRow = start_row )
 
-  # add freeze pane on rows 1 and 2
-  openxlsx::freezePane(wrkbk, sheet = sheet_name, firstActiveRow = 3)
+  # add freeze pane on start_row and start_row + 1 rows
+  openxlsx::freezePane(wrkbk, sheet = sheet_name, firstActiveRow = start_row+2)
 
   # add style to labels
-  openxlsx::addStyle(wrkbk, sheet = sheet_name, rows = 1, cols = 1:length(var_labels), style = hs1)
+  openxlsx::addStyle(wrkbk, sheet = sheet_name, rows = start_row, cols = 1:length(var_labels), style = hs1)
 
 }
