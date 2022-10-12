@@ -4,22 +4,27 @@
 \alias{find_duplicates}
 \title{Find duplicate observations in a data frame by a identifier.}
 \usage{
-find_duplicates(data, id)
+find_duplicates(x, ..., sort = FALSE, name = "n")
 }
 \arguments{
-\item{data}{a data frame}
+\item{x}{A data frame, data frame extension (e.g. a tibble), or a
+lazy data frame (e.g. from dbplyr or dtplyr).}
 
-\item{id}{a variable containing the supposedly unique identifier}
-}
-\value{
-a tibble with non-uniquely identified rows
+\item{...}{<\code{\link[dplyr:dplyr_data_masking]{data-masking}}> Variables to group by.}
+
+\item{sort}{If \code{TRUE}, will show the largest groups at the top.}
+
+\item{name}{The name of the new column in the output.
+
+If omitted, it will default to \code{n}. If there's already a column called \code{n},
+it will error, and require you to specify the name.}
 }
 \description{
 Find duplicate observations in a data frame by a identifier.
 }
 \examples{
 x <- data.frame(subject = c("a", "a", "b", "c", "c"))
-y <- data.frame(subject = LETTERS[1:5])
 find_duplicates(x, subject)
-find_duplicates(y, subject)
+find_duplicates(mtcars, vs, am)
+
 }

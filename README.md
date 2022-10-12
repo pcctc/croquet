@@ -8,7 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/gtreg)](https://CRAN.R-project.org/package=gtreg)
+status](https://www.r-pkg.org/badges/version/croquet)](https://CRAN.R-project.org/package=croquet)
 <!-- badges: end -->
 
 A collection of clinical research organization (CRO) miscellaneous
@@ -102,7 +102,7 @@ add_labelled_sheet(out)
 saveWorkbook(wb, "check-wb-2.xlsx")
 ```
 
-<img src="man/figures/check-wb-2.PNG" alt="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." width="100%" />
+<img src="man/figures/check-wb-2.PNG" title="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." alt="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." width="100%" />
 
 ## Importing labelled data from excel
 
