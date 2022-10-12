@@ -6,6 +6,7 @@
 #' @param sheet name of sheet to import
 #' @param date_detect regex expression indicating variables to be imported
 #' as dates
+#' @param start_row integer row position where labels are placed, defaults to 1L
 #'
 #' @return a tibble
 #' @export
@@ -18,10 +19,10 @@
 #'   date_detect = "cyc1_visdat|cyc2_visdat"
 #')
 #'}
-read_labelled_sheet <- function(path, sheet, date_detect = NULL){
+read_labelled_sheet <- function(path, sheet, date_detect = NULL, start_row = 1L){
 
   # data frame with variable labels and single row containing variable names
-  dat_header <- readxl::read_excel(path = path, sheet = sheet, n_max = 1)
+  dat_header <- readxl::read_excel(path = path, sheet = sheet, n_max = 1, skip = start_row - 1)
 
   # variable labels
   dat_labels <- colnames(dat_header)
@@ -42,7 +43,7 @@ read_labelled_sheet <- function(path, sheet, date_detect = NULL){
   dat <- readxl::read_excel(
     path = path,
     sheet = sheet,
-    skip = 1,
+    skip = start_row,
     col_types = variable_types
   )
 

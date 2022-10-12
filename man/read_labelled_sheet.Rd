@@ -4,7 +4,7 @@
 \alias{read_labelled_sheet}
 \title{Reads an excel sheet with labelled data}
 \usage{
-read_labelled_sheet(path, sheet, date_detect = NULL)
+read_labelled_sheet(path, sheet, date_detect = NULL, start_row = 1L)
 }
 \arguments{
 \item{path}{to the xls/xlsx file, including data set name and extension}
@@ -13,6 +13,8 @@ read_labelled_sheet(path, sheet, date_detect = NULL)
 
 \item{date_detect}{regex expression indicating variables to be imported
 as dates}
+
+\item{start_row}{integer row position where labels are placed, defaults to 1L}
 }
 \value{
 a tibble
