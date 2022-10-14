@@ -8,6 +8,7 @@
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
 #' @param wrkbk workbook object, defaults to wb
+#' @param start_row integer row position where Labels are placed, defaults to 1L
 #'
 #' @return a workbook object
 #' @export
@@ -53,7 +54,7 @@
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 #'
-add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
+add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb, start_row = 1L){
 
   # character name of input data
   data_chr <- rlang::as_label(rlang::ensym(data))
@@ -62,8 +63,8 @@ add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb){
   if(is.null(sheet_name)) sheet_name <- data_chr
 
   # exporting when list of data frames supplied
-  if("list" %in% class(data))   purrr::imap(data, ~labelled_sheet(.x, .y, wrkbk))
+  if("list" %in% class(data))   purrr::imap(data, ~labelled_sheet(.x, .y, wrkbk, start_row))
 
   # exporting when single data frame supplied
-  if("data.frame" %in% class(data))  labelled_sheet(data, sheet_name, wrkbk)
+  if("data.frame" %in% class(data))  labelled_sheet(data, sheet_name, wrkbk, start_row)
 }

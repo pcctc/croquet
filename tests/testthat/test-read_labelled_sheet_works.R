@@ -24,4 +24,19 @@ test_that("read_labelled_sheet gives same output as input data", {
   expect_equal(unname(labelled::var_label(input_df, unlist = TRUE)),
                unname(labelled::var_label(output_df, unlist = TRUE)))
 
+  # To test that labels starting from rows other than 1 also works
+  wb <- openxlsx::createWorkbook()
+  add_labelled_sheet(input_df, wb, sheet_name = "example sheet", start_row = 2L)
+  openxlsx::saveWorkbook(wb, "checkwb2.xlsx", overwrite = TRUE)
+
+  output_df <- read_labelled_sheet("checkwb2.xlsx", sheet = "example sheet", start_row = 2L)
+  unlink("checkwb2.xlsx")
+
+  # Column Names are same
+  expect_equal(colnames(input_df),colnames(output_df))
+
+  # Labels are same
+  expect_equal(unname(labelled::var_label(input_df, unlist = TRUE)),
+               unname(labelled::var_label(output_df, unlist = TRUE)))
+
 })
