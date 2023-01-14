@@ -17,7 +17,7 @@ of input data set}
 \item{start_row}{integer row position where Labels are placed, defaults to 1L}
 }
 \value{
-a workbook object
+a list containing worksheet definition; the function modifies the object passed to the \code{wb} argument.
 }
 \description{
 Row 1 contains variable labels; row 2 contains variable names, freeze panes,

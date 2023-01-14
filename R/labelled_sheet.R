@@ -9,7 +9,7 @@
 #' @param wrkbk workbook name, defaults to wb
 #' @param start_row integer row position where the labels must be placed, `data` is placed at start_row+1, defaults to 1L
 #'
-#' @return a workbook object
+#' @return a list containing worksheet definition; the function modifies the object passed to the `wb` argument.
 #'
 #' @examples
 #' \dontrun{

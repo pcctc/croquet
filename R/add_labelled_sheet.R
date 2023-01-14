@@ -10,7 +10,7 @@
 #' @param wrkbk workbook object, defaults to wb
 #' @param start_row integer row position where Labels are placed, defaults to 1L
 #'
-#' @return a workbook object
+#' @return a list containing worksheet definition; the function modifies the object passed to the `wb` argument.
 #' @export
 #'
 #' @examples
