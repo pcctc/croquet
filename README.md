@@ -102,7 +102,14 @@ add_labelled_sheet(out)
 saveWorkbook(wb, "check-wb-2.xlsx")
 ```
 
-<img src="man/figures/check-wb-2.PNG" title="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." alt="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." width="100%" />
+<div class="figure">
+
+<img src="man/figures/check-wb-2.PNG" alt="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." width="100%" />
+<p class="caption">
+Screenshot of resulting excel output.
+</p>
+
+</div>
 
 ## Importing labelled data from excel
 
