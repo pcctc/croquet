@@ -1,0 +1,53 @@
+---
+title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
+subtitle: "Analysis"
+date: "`r Sys.Date()`"
+execute: 
+  echo: true
+format:
+  html:
+    toc: true
+    toc-float: true
+    toc-depth: 2
+    toc-location: left
+embed-resources: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
+```
+
+# Analytic Data Import
+
+```{r}
+#| label: import
+library(dsverse); library(tidyverse)
+
+# setting MSK ggplot theme, gtsummary theme, and color palette
+theme_set(mskRvis::theme_biostat()); theme_gtsummary_msk("hot"); mskRvis::set_msk_palette()
+
+# importing master analytic data set
+df_main <- readRDS(file = here_data("df_main.Rds"))
+```
+
+
+# Analysis
+
+```{r}
+#| label: analysis1
+
+```
+
+# Save Results
+
+```{r}
+#| label: save
+# list result objects here. save only those needed for the final report
+save(
+  df_results, gt_table1,
+  file = here_data("results.Rdata")
+)
+```
+
