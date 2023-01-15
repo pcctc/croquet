@@ -5,7 +5,7 @@
 #' preferences in RStudio.
 #'
 #' ```{r, echo = FALSE}
-#' bst_prefs %>%
+#' data_science_prefs %>%
 #'   purrr::map(as.character) %>%
 #'   unlist() %>%
 #'   tibble::enframe() %>%
@@ -18,9 +18,9 @@
 #' @export
 #'
 #' @examplesIf FALSE
-#' use_ds_rstudio_prefs()
+#' use_pcctc_rstudio_prefs()
 
-use_ds_rstudio_prefs <- function(profile = tolower(Sys.info()[["user"]])) {
+use_pcctc_rstudio_prefs <- function(profile = tolower(Sys.info()[["user"]])) {
   # adding user-specific preferences -------------------------------------------
   if (profile %in% names(profile_prefs)) {
     cli::cli_alert_info("Adding {.val {profile}} preferences...")
