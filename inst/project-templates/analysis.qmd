@@ -17,6 +17,7 @@ embed-resources: true
 #| label: setup
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
+options("openxlsx.dateFormat" = "yyyy-mm-dd")
 ```
 
 # Analytic Data Import

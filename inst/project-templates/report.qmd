@@ -26,6 +26,7 @@ csl: templates/european-urology.csl
 # set chunk defaults, code chunks are NOT printed in output for report
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
+options("openxlsx.dateFormat" = "yyyy-mm-dd")
 ```
 
 ```{r}

@@ -11,13 +11,13 @@ format:
 embed-resources: true
 execute: 
   echo: true
-  
 ---
 
 ```{r}
 #| label: setup
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
+options("openxlsx.dateFormat" = "yyyy-mm-dd")
 ```
 
 # Raw Data Import
