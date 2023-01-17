@@ -8,7 +8,8 @@ Authors@R: c(
 Description: Miscellaneous operations for PCCTC, a Clinical Research
     Organization (CRO).
 License: MIT + file LICENSE
-URL: https://github.com/pcctc/croquet
+URL: https://github.com/pcctc/croquet,
+    https://pcctc.github.io/croquet/
 BugReports: https://github.com/pcctc/croquet/issues
 Imports: 
     broom.helpers,
