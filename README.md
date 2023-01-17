@@ -9,6 +9,9 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/croquet)](https://CRAN.R-project.org/package=croquet)
+[![Codecov test
+coverage](https://codecov.io/gh/pcctc/croquet/branch/main/graph/badge.svg)](https://app.codecov.io/gh/pcctc/croquet?branch=main)
+[![R-CMD-check](https://github.com/pcctc/croquet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pcctc/croquet/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 A collection of clinical research organization (CRO) miscellaneous
@@ -102,7 +105,14 @@ add_labelled_sheet(out)
 saveWorkbook(wb, "check-wb-2.xlsx")
 ```
 
-<img src="man/figures/check-wb-2.PNG" title="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." alt="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." width="100%" />
+<div class="figure">
+
+<img src="man/figures/check-wb-2.PNG" alt="Shows two tabs named dat1 and dat2. Row 1 has light gray italics text and white background; row 2 has a black background and white text." width="100%" />
+<p class="caption">
+Screenshot of resulting excel output.
+</p>
+
+</div>
 
 ## Importing labelled data from excel
 
