@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://pcctc.github.io/croquet/404.html</loc>
   </url>
   <url>
-    <loc>/CONTRIBUTING.html</loc>
+    <loc>https://pcctc.github.io/croquet/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://pcctc.github.io/croquet/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://pcctc.github.io/croquet/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://pcctc.github.io/croquet/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://pcctc.github.io/croquet/index.html</loc>
   </url>
   <url>
-    <loc>/reference/add_labelled_sheet.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/add_labelled_sheet.html</loc>
   </url>
   <url>
-    <loc>/reference/croquet-package.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/croquet-package.html</loc>
   </url>
   <url>
-    <loc>/reference/find_duplicates.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/find_duplicates.html</loc>
   </url>
   <url>
-    <loc>/reference/group_split_named.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/group_split_named.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/labelled_sheet.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/labelled_sheet.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/read_labelled_sheet.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/read_labelled_sheet.html</loc>
   </url>
   <url>
-    <loc>/reference/retrieve_labels.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/retrieve_labels.html</loc>
   </url>
   <url>
-    <loc>/reference/theme_gtsummary_pcctc.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/theme_gtsummary_pcctc.html</loc>
   </url>
   <url>
-    <loc>/reference/tidyeval.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/tidyeval.html</loc>
   </url>
   <url>
-    <loc>/reference/use_pcctc_rstudio_prefs.html</loc>
+    <loc>https://pcctc.github.io/croquet/reference/use_pcctc_rstudio_prefs.html</loc>
   </url>
 </urlset>
