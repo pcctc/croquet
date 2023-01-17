@@ -2,13 +2,17 @@
 title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
 date: "`r format(Sys.Date(), format='%B %d, %Y')`"
 format:
-  docx:
-    reference-doc: templates/doc_template.docx
   html:
+    page-layout: full
+    theme: united
+    mainfont: 'Open Sans'
+    linkcolor: '#0000EE'
     toc: true
     toc-float: true
     toc-depth: 2
     toc-location: left
+  docx:
+    reference-doc: templates/doc_template.docx
 embed-resources: true
 execute:
   echo: false
@@ -17,10 +21,6 @@ execute:
 bibliography: templates/references.bib
 csl: templates/european-urology.csl
 ---
-
-<!-- YAML options for both HTML and Word documents are given here. Delete output type not being used. -->
-
-<!-- To cite a reference within the document, the ref must be included in the `templates/references.bib` file. Use square brackets and @ with the shorthand term. Ex: The generalized additive model models the relationship between the mean of the response variable and sum of smooth functions of the explanatory variables [@hastie1986gam]. -->
 
 ```{r setup}
 # set chunk defaults, code chunks are NOT printed in output for report

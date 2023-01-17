@@ -1,7 +1,7 @@
 ## code to prepare project template goes here
 
 # Base PCCTC project template ------------------------------------------------------
-project_template_base <-
+project_template_default <-
   list(
     readme = rlang::expr(list(
       template_filename = fs::path_package("project-templates/readme.md", package = "croquet"),
@@ -25,32 +25,32 @@ project_template_base <-
     )),
     derived_vars = rlang::expr(list(
       template_filename = fs::path_package("project-templates/derived_variables.xlsx", package = "croquet"),
-      filename = glue::glue("scripts/derived_variables.xlsx"),
+      filename = glue::glue("data-setup/derived_variables.xlsx"),
       copy = TRUE
     )),
     setup = rlang::expr(list(
       template_filename = fs::path_package("project-templates/setup.qmd", package = "croquet"),
-      filename = glue::glue("scripts/10-setup_{folder_first_word}.qmd"),
+      filename = glue::glue("data-setup/10-setup_{folder_first_word}.qmd"),
       copy = FALSE
     )),
     analysis = rlang::expr(list(
       template_filename = fs::path_package("project-templates/analysis.qmd", package = "croquet"),
-      filename = glue::glue("scripts/20-analysis_{folder_first_word}.qmd"),
+      filename = glue::glue("analysis/20-analysis_{folder_first_word}.qmd"),
       copy = FALSE
     )),
     report = rlang::expr(list(
       template_filename = fs::path_package("project-templates/report.qmd", package = "croquet"),
-      filename = glue::glue("scripts/30-report_{folder_first_word}.qmd"),
+      filename = glue::glue("analysis/30-report_{folder_first_word}.qmd"),
       copy = FALSE
     )),
     doc_template = rlang::expr(list(
       template_filename = fs::path_package("project-templates/doc_template.docx", package = "croquet"),
-      filename = "scripts/templates/doc_template.docx",
+      filename = "analysis/templates/doc_template.docx",
       copy = TRUE
     )),
     references = rlang::expr(list(
       template_filename = fs::path_package("project-templates/references.bib", package = "croquet"),
-      filename = glue::glue("scripts/templates/references.bib"),
+      filename = glue::glue("analysis/templates/references.bib"),
       copy = TRUE
     )),
     # only add Rprofile if renv was used
@@ -65,43 +65,11 @@ project_template_base <-
       )),
     csl = rlang::expr(list(
       template_filename = fs::path_package("project-templates/european-urology.csl", package = "croquet"),
-      filename = "scripts/templates/european-urology.csl",
+      filename = "analysis/templates/european-urology.csl",
       copy = TRUE
     ))
   )
 
-## default bst template (scripts/results in folder) ----------------------------
-project_template_default <-
-  c(
-    project_template_base,
-    list(
-      setup = rlang::expr(list(
-        template_filename = fs::path_package("project-templates/setup.qmd", package = "croquet"),
-        filename = glue::glue("scripts/10-setup_{folder_first_word}.qmd"),
-        copy = FALSE
-      )),
-      analysis = rlang::expr(list(
-        template_filename = fs::path_package("project-templates/analysis.qmd", package = "croquet"),
-        filename = glue::glue("scripts/20-analysis_{folder_first_word}.qmd"),
-        copy = FALSE
-      )),
-      report = rlang::expr(list(
-        template_filename = fs::path_package("project-templates/report.qmd", package = "croquet"),
-        filename = glue::glue("scripts/30-report_{folder_first_word}.qmd"),
-        copy = FALSE
-      )),
-      doc_template = rlang::expr(list(
-        template_filename = fs::path_package("project-templates/doc_template.docx", package = "croquet"),
-        filename = "scripts/templates/doc_template.docx",
-        copy = TRUE
-      )),
-      references = rlang::expr(list(
-        template_filename = fs::path_package("project-templates/references.bib", package = "croquet"),
-        filename = glue::glue("scripts/templates/references.bib"),
-        copy = TRUE
-      ))
-    )
-  )
 attr(project_template_default, "script_path") <-
   expression(fs::path_package("project-templates/script_phi_private.R", package = "croquet"))
 attr(project_template_default, "label") <- "PCCTC Project Template (Quarto)"
