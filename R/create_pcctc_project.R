@@ -29,7 +29,7 @@ create_pcctc_project <- function(path, renv = TRUE, overwrite = NA) {
     open = FALSE
   )
 
-  cli::cli_alert_success("Navigate to {.path {path}}")
+  cli::cli_ul("Navigate to {.path {path}}")
 }
 
 #' @export
