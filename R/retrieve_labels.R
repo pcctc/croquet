@@ -31,7 +31,7 @@ retrieve_labels <- function(data, wide = TRUE){
   # that contains variable labels
   if (wide){
     out <- dictionary %>%
-      dplyr::select(.data$variable, .data$label) %>%
+      dplyr::select("variable", "label") %>%
       tidyr::pivot_wider(
         names_from = "variable",
         values_from = "label"
