@@ -23,7 +23,7 @@ create_pcctc_project <- function(path, renv = TRUE, overwrite = NA) {
   # add subdirectory with data setup folder
   starter::create_project(
     path = file.path(path, "data-setup"),
-    template = croquet::project_templates[["subdirectory"]][c("setup", "data_date", "rproj", "rprofile")],
+    template = croquet::project_templates[["subdirectory"]][c("setup", "data_date", "rproj", "rprofile", "readme")],
     git = FALSE,
     renv = renv,
     open = FALSE
@@ -42,7 +42,7 @@ add_project_subdirectory <- function(name, renv = TRUE, open = TRUE, overwrite =
 
   starter::create_project(
     path = path,
-    template = croquet::project_templates[["subdirectory"]][!names(project_templates[["subdirectory"]]) %in% c("setup", "readme")],
+    template = croquet::project_templates[["subdirectory"]][!names(project_templates[["subdirectory"]]) %in% c("setup")],
     git = FALSE,
     renv = renv,
     open = open
