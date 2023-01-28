@@ -16,7 +16,7 @@ Imports:
     dplyr,
     flextable,
     gt,
-    gtsummary (>= 1.7.0),
+    gtsummary,
     labelled,
     magrittr,
     openxlsx,
@@ -24,6 +24,7 @@ Imports:
     readxl,
     rlang (>= 0.4.11),
     rstudio.prefs (>= 0.1.9),
+    starter,
     stringr,
     tibble,
     tidyr
@@ -36,3 +37,5 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
