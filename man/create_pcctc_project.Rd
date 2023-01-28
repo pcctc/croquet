@@ -7,7 +7,7 @@
 \usage{
 create_pcctc_project(path, renv = TRUE, overwrite = NA)
 
-add_project_subdirectory(path, renv = TRUE, open = TRUE, overwrite = NA)
+add_project_subdirectory(name, renv = TRUE, open = TRUE, overwrite = NA)
 }
 \arguments{
 \item{path}{A path. If it exists, it is used. If it does not exist, it is
@@ -19,6 +19,8 @@ Default is \code{TRUE}. When \code{NA} user is asked interactively for preferenc
 \item{overwrite}{Logical indicating whether to overwrite existing files
 if they exist.  Options are
 \code{TRUE}, \code{FALSE}, and \code{NA} (aka ask interactively).  Default is \code{NA}}
+
+\item{name}{name of directory to add to project folder.}
 
 \item{open}{Logical indicating whether to open new project in fresh RStudio
 session}

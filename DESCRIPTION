@@ -17,6 +17,7 @@ Imports:
     flextable,
     gt,
     gtsummary,
+    here,
     labelled,
     magrittr,
     openxlsx,

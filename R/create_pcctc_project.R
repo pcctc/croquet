@@ -1,6 +1,7 @@
 #' Create PCCTC Project
 #'
 #' @inheritParams starter::create_project
+#' @param name name of directory to add to project folder.
 #'
 #' @name create_pcctc_project
 #' @examples
@@ -33,8 +34,11 @@ create_pcctc_project <- function(path, renv = TRUE, overwrite = NA) {
 
 #' @export
 #' @rdname create_pcctc_project
-add_project_subdirectory <- function(path, renv = TRUE, open = TRUE, overwrite = NA) {
-  # add checks that the parent dir exists, has a git repo, anything else?
+add_project_subdirectory <- function(name, renv = TRUE, open = TRUE, overwrite = NA) {
+  # TODO: add checks that the parent dir exists, has a git repo, name is a string, anything else?
+
+  # TODO: add a question to user confirming directory placement!
+  path <- file.path(here::here(), name)
 
   starter::create_project(
     path = path,

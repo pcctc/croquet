@@ -3,6 +3,12 @@
 # Base PCCTC project template --------------------------------------------------
 base_directory_template <-
   list(
+    rproj =
+      rlang::expr(list(
+        template_filename = fs::path_package("project-templates/default_rproj.Rproj", package = "croquet"),
+        filename = stringr::str_glue("{folder_name}.Rproj"),
+        copy = TRUE
+      )),
     readme =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/readme.md", package = "croquet"),
