@@ -23,16 +23,15 @@ csl: templates/european-urology.csl
 ---
 
 ```{r setup}
-# set chunk defaults, code chunks are NOT printed in output for report
 #| include: false
+# set chunk defaults, code chunks are NOT printed in output for report
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
 options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
-```{r}
-#| label: import
+```{r import}
 #| include: false
-library(biostatR); library(tidyverse)
+library(dsverse); library(tidyverse)
 # setting MSK ggplot theme, gtsummary theme, and color palette
 theme_set(mskRvis::theme_biostat()); theme_gtsummary_msk("hot"); mskRvis::set_msk_palette()
 
@@ -40,8 +39,7 @@ theme_set(mskRvis::theme_biostat()); theme_gtsummary_msk("hot"); mskRvis::set_ms
 load(here_data("results.Rdata"))
 ```
 
-```{r}
-#| label: inline_text
+```{r inline_text}
 #| include: false
 
 # define complex inline-reporting objects here

@@ -37,3 +37,6 @@ Create PCCTC Project
 \examples{
 # add example
 }
+\author{
+Daniel D. Sjoberg
+}

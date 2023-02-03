@@ -44,7 +44,7 @@ set_variable_labels <- function(data, path, sheet = NULL, drop = TRUE) {
   data <-
     data %>%
     dplyr::select(
-      dplyr::any_of(c("mrn", "subject", "patient_id", "id", "subject", "subject_id", "instance_anme")),
+      dplyr::any_of(c("mrn", "subject", "patient_id", "id", "subject_id", "instance_name")),
       dplyr::everything()
     )
 

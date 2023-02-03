@@ -4,6 +4,7 @@
 #' @param name name of directory to add to project folder.
 #'
 #' @name create_pcctc_project
+#' @author Daniel D. Sjoberg
 #' @examples
 #' # add example
 NULL

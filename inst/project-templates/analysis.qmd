@@ -13,8 +13,7 @@ format:
 embed-resources: true
 ---
 
-```{r}
-#| label: setup
+```{r setup}
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
 options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
@@ -22,8 +21,7 @@ options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 
 # Analytic Data Import
 
-```{r}
-#| label: import
+```{r import}
 library(dsverse); library(tidyverse)
 
 # setting MSK ggplot theme, gtsummary theme, and color palette
@@ -36,15 +34,13 @@ df_main <- readRDS(file = here_data("df_main.Rds"))
 
 # Analysis
 
-```{r}
-#| label: analysis1
+```{r analysis1}
 
 ```
 
 # Save Results
 
-```{r}
-#| label: save
+```{r save}
 # list result objects here. save only those needed for the final report
 save(
   df_results, gt_table1,

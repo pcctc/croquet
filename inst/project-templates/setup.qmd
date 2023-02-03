@@ -13,8 +13,7 @@ execute:
   echo: true
 ---
 
-```{r}
-#| label: setup
+```{r setup}
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
 options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
@@ -22,9 +21,8 @@ options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 
 # Raw Data Import
 
-```{r}
-#| label: import
-library(biostatR); library(tidyverse)
+```{r import}
+library(dsverse); library(tidyverse)
 # library(tidylog)
 
 # setting MSK ggplot theme, gtsummary theme, and color palette
@@ -41,26 +39,23 @@ df_raw_data <-
 
 # Create Master Analytic Data Set
 
-```{r}
-#| label: cleaning
+```{r cleaning}
 
 ```
 
 
 # Check Variable Derivations
 
-```{r}
-#| label: checking
+```{r checking}
 
 ```
 
 # Save Analytic Data
 
-```{r}
-#| label: save
+```{r save}
 # applying variable labels, and dropping raw variables
 df_main <- df_main %>%
-  set_derived_variables(path = here::here("scripts/derived_variables_{{stringr::str_split(folder_name, pattern = ' |-', simplify = T)[, 1] %>% tolower()}}.xlsx"))
+  set_variable_labels(path = here::here("scripts/derived_variables_{{stringr::str_split(folder_name, pattern = ' |-', simplify = T)[, 1] %>% tolower()}}.xlsx"))
 
 # overview of master analytic dataset
 skimr::skim(df_main)
