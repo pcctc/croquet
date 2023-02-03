@@ -30,7 +30,8 @@ Imports:
     starter,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    yaml
 Suggests: 
     covr,
     roxygen2,

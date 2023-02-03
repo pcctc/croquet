@@ -5,6 +5,7 @@ test_that("create_pcctc_project() works", {
   expect_error(
     create_pcctc_project(
       path = temp_project_dir,
+      path_data = tempdir(),
       renv = FALSE,
       overwrite = TRUE
     ),
@@ -14,9 +15,11 @@ test_that("create_pcctc_project() works", {
   expect_setequal(
     list.files(temp_project_dir, recursive = TRUE),
     c(
-      "c12-3456-trial.Rproj", "data-setup/c12-3456-trial-data-setup.Rproj",
-      "data-setup/data-setup/setup1-c12-3456-trial-data-setup.qmd", "data-setup/data_date.txt",
-      "data-setup/README.md", "README.md"
+      "_env.yaml",
+      "c12-3456-trial.Rproj",
+      "data-setup/README.md",
+      "data-setup/setup1-c12-3456-trial-data-setup.qmd",
+      "README.md"
     )
   )
 })

@@ -1,0 +1,86 @@
+---
+title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
+subtitle: "Medidata Setup"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    toc-float: true
+    toc-depth: 2
+    toc-location: left
+embed-resources: true
+execute: 
+  echo: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
+options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
+```
+
+1. Import all raw Medidata datasets into a list
+
+1. Clean each of the Medidata datasets individually as needed. There are no changes to the structure of these data sets in this step, meaning that if a raw data set is one line per person per AE, the cleaned data set will have the same structure.
+
+# Raw Data Import
+
+```{r}
+#| label: import
+library(biostatR); library(tidyverse)
+# library(tidylog)
+
+# setting MSK ggplot theme, gtsummary theme, and color palette
+theme_set(mskRvis::theme_biostat()); theme_gtsummary_msk("hot"); mskRvis::set_msk_palette()
+
+# import sas files
+lst_medidata_raw_data <-
+  pcctc::read_sas_batch(bstfun::here_data("medidata")) %>%
+  # convert empty character strings to NA
+  map(\(x) x %>% mutate(across(where(is.character), ~na_if(., "")))) %>%
+  # convert all date-time variables to dates only 
+  map(\(x) x %>% mutate(across(where(is.POSIXct), lubridate::as_date))) %>% 
+  # convert all date fields stored as unknown / 1900 to missing %>% 
+  map(\(x) x %>% mutate(across(where(is.Date), ~ case_when(lubridate::year(.) == 1900 ~ NA_Date_, TRUE ~ .)))) |> 
+  # make all RAW variables uppercase
+  map(\(x) rename_with(x, .fn = toupper, .cols = everything()))
+
+names(lst_medidata_raw_data)
+
+```
+
+# Create Master Analytic Data Set
+
+```{r}
+#| label: cleaning
+
+```
+
+
+# Check Variable Derivations
+
+```{r}
+#| label: checking
+
+```
+
+# Save Analytic Data
+
+```{r}
+#| label: save
+# applying variable labels, and dropping raw variables
+df_main <- df_main %>%
+  set_derived_variables(path = here::here("scripts/derived_variables_{{stringr::str_split(folder_name, pattern = ' |-', simplify = T)[, 1] %>% tolower()}}.xlsx"))
+
+# overview of master analytic dataset
+skimr::skim(df_main)
+
+#saving cleaned Medidata files
+save(
+  # save all cleaned medidata data frames
+  list = 
+    paste0("df_", names(lst_medidata_raw_data)) |> intersect(ls()),
+  file = bstfun::here_data("derived-data", "medidata-cleaned.Rdata")
+)
+```

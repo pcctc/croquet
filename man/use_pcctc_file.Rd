@@ -19,14 +19,13 @@ use_pcctc_analysis(filename = NULL)
 use_pcctc_report(filename = NULL)
 }
 \arguments{
-\item{name}{Name of file to write.  Not sure of the files available to you?
-Run the function without specifying a name, and all files available within the
-template will print.}
+\item{name}{name of directory to add to project folder.}
 
 \item{filename}{Optional argument to specify the name of the file to be written.
 Paths/filename is relative to project base (e.g. \code{here::here()})}
 
-\item{open}{If \code{TRUE}, opens the new file.}
+\item{open}{Logical indicating whether to open new project in fresh RStudio
+session}
 }
 \description{
 You may use \code{use_pcctc_file()} to write a single file from the PCCTC project template.

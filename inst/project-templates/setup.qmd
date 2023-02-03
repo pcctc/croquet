@@ -17,7 +17,7 @@ execute:
 #| label: setup
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
-options("openxlsx.dateFormat" = "yyyy-mm-dd")
+options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
 # Raw Data Import

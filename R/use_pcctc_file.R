@@ -22,7 +22,7 @@ NULL
 #' @export
 use_pcctc_file <- function(name, filename, open = interactive()) {
   starter::use_project_file(
-    name = name, filename = filename, template = purrr::flatten(project_templates), open = open)
+    name = name, filename = filename, template = purrr::flatten(croquet::project_templates), open = open)
 }
 
 #' @rdname use_pcctc_file

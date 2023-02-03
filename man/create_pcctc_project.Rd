@@ -2,16 +2,22 @@
 % Please edit documentation in R/create_pcctc_project.R
 \name{create_pcctc_project}
 \alias{create_pcctc_project}
-\alias{add_project_subdirectory}
+\alias{add_project_directory}
+\alias{add_project_setup_directory}
 \title{Create PCCTC Project}
 \usage{
-create_pcctc_project(path, renv = TRUE, overwrite = NA)
+create_pcctc_project(path, path_data, renv = TRUE, overwrite = NA)
 
-add_project_subdirectory(name, renv = TRUE, open = TRUE, overwrite = NA)
+add_project_directory(name, overwrite = NA)
+
+add_project_setup_directory(renv = TRUE, open = TRUE, overwrite = NA)
 }
 \arguments{
 \item{path}{A path. If it exists, it is used. If it does not exist, it is
 created.}
+
+\item{path_data}{A path. The directory where the secure data exist. Default is
+\code{NULL}.  When supplied, a symbolic link to data folder will be created.}
 
 \item{renv}{Logical indicating whether to add renv to a project.
 Default is \code{TRUE}. When \code{NA} user is asked interactively for preference.}

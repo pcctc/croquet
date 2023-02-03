@@ -1,0 +1,5 @@
+path-data: '{{path_data}}'
+
+directory:
+  data-setup:
+    data-date: '{{Sys.Date()}}'
