@@ -35,12 +35,8 @@ The functions \code{use_pcctc_gitignore()} and friends are shortcuts for
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # create gitignore file
-use_bst_file("gitignore")
-use_bst_gitignore()
-
-# create README.md file
-use_bst_file("readme")
-use_bst_readme()
+use_pcctc_file("gitignore")
+use_pcctc_gitignore()
 \dontshow{\}) # examplesIf}
 }
 \seealso{

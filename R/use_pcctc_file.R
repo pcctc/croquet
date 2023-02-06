@@ -10,12 +10,9 @@
 #' @seealso [`create_pcctc_project()`]
 #' @examplesIf FALSE
 #' # create gitignore file
-#' use_bst_file("gitignore")
-#' use_bst_gitignore()
-#'
-#' # create README.md file
-#' use_bst_file("readme")
-#' use_bst_readme()
+#' use_pcctc_file("gitignore")
+#' use_pcctc_gitignore()
+
 NULL
 
 #' @rdname use_pcctc_file

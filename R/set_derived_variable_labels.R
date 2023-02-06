@@ -12,9 +12,9 @@
 #' @export
 #' @examplesIf FALSE
 #' trial %>%
-#'   set_variable_labels("derived_variables_sjoberg.xlsx")
+#'   set_derived_variable_labels("derived_variables_sjoberg.xlsx")
 
-set_variable_labels <- function(data, path, sheet = NULL, drop = TRUE) {
+set_derived_variable_labels <- function(data, path, sheet = NULL, drop = TRUE) {
   # import ---------------------------------------------------------------------
   # reading in excel file of Derived Variables
   df_derived_variables <- readxl::read_excel(path = path, sheet = sheet)
