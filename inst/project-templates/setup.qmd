@@ -26,7 +26,7 @@ library(dsverse); library(tidyverse)
 # library(tidylog)
 
 # setting MSK ggplot theme, gtsummary theme, and color palette
-theme_set(mskRvis::theme_biostat()); theme_gtsummary_msk("hot"); mskRvis::set_msk_palette()
+theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_palette()
 
 # example code for importing excel file
 df_raw_data <-
@@ -61,5 +61,5 @@ df_main <- df_main %>%
 skimr::skim(df_main)
 
 #saving master analytic data set
-saveRDS(object = df_main, file = here_data("df_main.Rds"))
+save(df_main, here_data("derived-data", "raw-data-cleaned.Rdata"))
 ```

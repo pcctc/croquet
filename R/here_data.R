@@ -29,7 +29,9 @@ here_data <- function(..., .dir_name = getOption("dir_name")) {
   }
 
   # return constructed path ----------------------------------------------------
-  file.path(path_data_date, ...)
+  final_path <- file.path(path_data_date, ...)
+  .notify_dir_exist(final_path)
+  final_path
 }
 
 #' @export
@@ -53,4 +55,26 @@ get_data_date <- function(.dir_name = getOption("dir_name")) {
           "in {.path _env.yaml}.") %>%
       cli::cli_abort()
   }
+}
+
+
+.notify_dir_exist <- function(path) {
+  if (basename(path) |> stringr::str_detect(stringr::fixed("."))) {
+    path <- dirname(path)
+  }
+  if (!dir.exists(path)) {
+    cli::cli_alert_info("Path {.path {path}} does not exist.")
+
+    if (interactive()) {
+      create_dir <-
+        utils::menu(c("Yes", "No"), title = "Do you want to create it?") %>%
+        dplyr::recode("1" = TRUE, "2" = FALSE)
+
+      if (isTRUE(create_dir)) {
+        dir.create(path = path)
+      }
+    }
+
+  }
+  invisible()
 }

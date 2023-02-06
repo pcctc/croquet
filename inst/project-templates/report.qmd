@@ -33,10 +33,10 @@ options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 #| include: false
 library(dsverse); library(tidyverse)
 # setting MSK ggplot theme, gtsummary theme, and color palette
-theme_set(mskRvis::theme_biostat()); theme_gtsummary_msk("hot"); mskRvis::set_msk_palette()
+theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_palette()
 
 # Import analysis result objects here
-load(here_data("results.Rdata"))
+load(here_data("results", "results.Rdata"))
 ```
 
 ```{r inline_text}
