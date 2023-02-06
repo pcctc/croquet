@@ -12,6 +12,7 @@ Miscellaneous operations for PCCTC, a Clinical Research Organization (CRO).
 Useful links:
 \itemize{
   \item \url{https://github.com/pcctc/croquet}
+  \item \url{https://pcctc.github.io/croquet/}
   \item Report bugs at \url{https://github.com/pcctc/croquet/issues}
 }
 
