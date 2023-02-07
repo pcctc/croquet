@@ -1,0 +1,7 @@
+url: https://pcctc.github.io/croquet/
+template:
+  bootstrap: 5
+
+development:
+  mode: auto
+  version_label: default
