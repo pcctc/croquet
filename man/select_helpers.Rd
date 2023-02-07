@@ -12,8 +12,8 @@ all_lowercase()
 }
 \description{
 \itemize{
-\item \code{all_uppercase()} select all columns with names that are upper case
-\item \code{all_lowercase()} select all columns with names that are lower case
+\item \code{all_uppercase()} select all columns with upper case names
+\item \code{all_lowercase()} select all columns with lower case names
 }
 }
 \examples{

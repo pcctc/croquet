@@ -1,7 +1,7 @@
 #' Select Helpers
 #'
-#' - `all_uppercase()` select all columns with names that are upper case
-#' - `all_lowercase()` select all columns with names that are lower case
+#' - `all_uppercase()` select all columns with upper case names
+#' - `all_lowercase()` select all columns with lower case names
 #' @name select_helpers
 #'
 #' @examples
