@@ -10,4 +10,8 @@ test_that("select_helpers() works", {
     df |> select(all_lowercase()) |> names(),
     "two"
   )
+
+  expect_snapshot(
+    df |> dplyr::summarize(dplyr::across(all_uppercase(), mean))
+  )
 })
