@@ -17,7 +17,8 @@ lazy data frame (e.g. from dbplyr or dtplyr).}
 \item{name}{The name of the new column in the output.
 
 If omitted, it will default to \code{n}. If there's already a column called \code{n},
-it will error, and require you to specify the name.}
+it will use \code{nn}. If there's a column called \code{n} and \code{nn}, it'll use
+\code{nnn}, and so on, adding \code{n}s until it gets a new name.}
 }
 \description{
 Find duplicate observations in a data frame by a identifier.

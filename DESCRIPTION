@@ -21,11 +21,12 @@ Imports:
     rlang (>= 0.4.11),
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    tidyselect
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3
