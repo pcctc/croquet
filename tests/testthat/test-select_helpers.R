@@ -7,6 +7,14 @@ test_that("select_helpers() works", {
   )
 
   expect_equal(
+    df |>
+      labelled::set_variable_labels(ONE = "First Column") |>
+      select(all_labelled()) |>
+      names(),
+    "ONE"
+  )
+
+  expect_equal(
     df |> select(all_lowercase()) |> names(),
     "two"
   )

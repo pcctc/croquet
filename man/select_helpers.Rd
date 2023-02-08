@@ -4,16 +4,20 @@
 \alias{select_helpers}
 \alias{all_uppercase}
 \alias{all_lowercase}
+\alias{all_labelled}
 \title{Select Helpers}
 \usage{
 all_uppercase()
 
 all_lowercase()
+
+all_labelled()
 }
 \description{
 \itemize{
 \item \code{all_uppercase()} select all columns with upper case names
 \item \code{all_lowercase()} select all columns with lower case names
+\item \code{all_labelled()} select all columns with a label attribute
 }
 }
 \examples{
@@ -21,4 +25,7 @@ df <- data.frame(ONE = 1, two = 2)
 
 df |> select(all_uppercase())
 df |> select(all_lowercase())
+df |>
+  labelled::set_variable_labels(ONE = "First Column") |>
+  select(all_labelled())
 }

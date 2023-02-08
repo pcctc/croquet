@@ -1,6 +1,6 @@
 # croquet (development version)
 
-* Added functions to select all upper case (`all_uppercase()`) and lower case (`all_lowercase()`) columns in a data set.
+* Added functions to select all upper case (`all_uppercase()`), lower case (`all_lowercase()`), and columns with label attributes (`all_labelled()`).
 
 * Re-exporting the `dplyr::select()` function.
 
