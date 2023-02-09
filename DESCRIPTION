@@ -1,6 +1,6 @@
 Package: croquet
 Title: Miscellaneous Operations For PCCTC
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person("Shannon", "Pileggi", , "pileggis@mskcc.org", role = c("aut", "cre")),
     person("Travis", "Gerke", , "gerket@mskcc.org", role = "aut")
@@ -27,7 +27,8 @@ Imports:
     rstudio.prefs (>= 0.1.9),
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    tidyselect
 Suggests: 
     covr,
     roxygen2,
