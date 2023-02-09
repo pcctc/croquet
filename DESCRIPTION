@@ -32,6 +32,7 @@ Imports:
     tibble,
     tidyr,
     yaml
+    tidyselect
 Suggests: 
     covr,
     roxygen2,
