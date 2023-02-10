@@ -37,7 +37,7 @@ here_data <- function(..., .dir_name = getOption("dir_name")) {
 #' @export
 #' @rdname here_data
 get_data_date <- function(.dir_name = getOption("dir_name")) {
-  if (file.exists("_env.yaml")) {
+  if (!file.exists("_env.yaml")) {
     cli::cli_abort("Cannot use the {.code here_data()} function without the {.path _env.yaml} file in the project root directory.")
   }
   env_yaml <- yaml::yaml.load_file(input = "_env.yaml")

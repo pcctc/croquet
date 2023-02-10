@@ -1,11 +1,13 @@
 ---
-title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
+title: "{{folder_name}}"
 subtitle: "Analysis"
 date: "`r Sys.Date()`"
 execute: 
   echo: true
 format:
   html:
+    page-layout: full
+    theme: united
     toc: true
     toc-float: true
     toc-depth: 2

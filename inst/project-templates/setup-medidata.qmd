@@ -1,9 +1,11 @@
 ---
-title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
+title: "{{folder_name}}"
 subtitle: "Medidata Setup"
 date: "`r Sys.Date()`"
 format:
   html:
+    page-layout: full
+    theme: united
     toc: true
     toc-float: true
     toc-depth: 2
@@ -19,32 +21,29 @@ set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
 options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
-1. Import all raw Medidata datasets into a list
+1. Import all raw Medidata data sets into a list
 
-1. Clean each of the Medidata datasets individually as needed. There are no changes to the structure of these data sets in this step, meaning that if a raw data set is one line per person per AE, the cleaned data set will have the same structure.
+1. Clean each of the Medidata data sets individually as needed. There are no changes to the structure of these data sets in this step, meaning that if a raw data set is one line per person per AE, the cleaned data set will have the same structure.
+
+1. The RAW Medidata is imported as a named list. After an individual data set is cleaned/checked, it is added to a named list.
 
 # Raw Data Import
 
 ```{r import}
 library(dsverse); library(tidyverse)
-# library(tidylog)
 
 # setting MSK ggplot theme, gtsummary theme, and color palette
 theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_palette()
 
 # import sas files
 lst_medidata_raw_data <-
-  pcctc::read_sas_batch(bstfun::here_data("medidata")) %>%
-  # convert empty character strings to NA
-  map(\(x) x %>% mutate(across(where(is.character), ~na_if(., "")))) %>%
-  # convert all date-time variables to dates only 
-  map(\(x) x %>% mutate(across(where(is.POSIXct), lubridate::as_date))) %>% 
-  # convert all date fields stored as unknown / 1900 to missing %>% 
-  map(\(x) x %>% mutate(across(where(is.Date), ~ case_when(lubridate::year(.) == 1900 ~ NA_Date_, TRUE ~ .)))) |> 
-  # make all RAW variables uppercase
-  map(\(x) rename_with(x, .fn = toupper, .cols = everything()))
+  read_sas_batch(here_data("medidata")) %>%
+  prepare_raw_medidata()
 
 names(lst_medidata_raw_data)
+
+# save cleaned medidata files into this named list.
+lst_medidata_data <- list()
 
 ```
 
@@ -54,21 +53,9 @@ names(lst_medidata_raw_data)
 
 ```
 
-
-# Check Variable Derivations
-
-```{r checking}
-
-```
-
 # Save Analytic Data
 
 ```{r save}
 #saving cleaned Medidata files
-save(
-  # save all cleaned medidata data frames
-  list = 
-    paste0("df_", names(lst_medidata_raw_data)) |> intersect(ls()),
-  file = here_data("derived-data", "medidata-cleaned.Rdata")
-)
+saveRDS(lst_medidata_data, file = here_data("derived-data", "medidata-cleaned.RDS"))
 ```

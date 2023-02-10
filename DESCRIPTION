@@ -21,6 +21,7 @@ Imports:
     gtsummary,
     here,
     labelled,
+    lubridate,
     magrittr,
     openxlsx,
     purrr,
@@ -31,8 +32,8 @@ Imports:
     stringr,
     tibble,
     tidyr,
+    tidyselect,
     yaml
-    tidyselect
 Suggests: 
     covr,
     roxygen2,

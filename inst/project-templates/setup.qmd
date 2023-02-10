@@ -1,9 +1,11 @@
 ---
-title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
+title: "{{folder_name}}"
 subtitle: "Initial Setup"
 date: "`r Sys.Date()`"
 format:
   html:
+    page-layout: full
+    theme: united
     toc: true
     toc-float: true
     toc-depth: 2
@@ -23,7 +25,6 @@ options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
 
 ```{r import}
 library(dsverse); library(tidyverse)
-# library(tidylog)
 
 # setting MSK ggplot theme, gtsummary theme, and color palette
 theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_palette()
@@ -55,7 +56,7 @@ df_raw_data <-
 ```{r save}
 # applying variable labels, and dropping raw variables
 df_main <- df_main %>%
-  set_variable_labels(path = here::here("scripts/derived_variables_{{stringr::str_split(folder_name, pattern = ' |-', simplify = T)[, 1] %>% tolower()}}.xlsx"))
+  set_variable_labels(path = here::here("derived-variables_{{basename(dirname(path))}}_{{folder_name}}.xlsx"))
 
 # overview of master analytic dataset
 skimr::skim(df_main)

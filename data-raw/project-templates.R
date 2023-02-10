@@ -7,19 +7,19 @@ base_directory_template <-
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/default_rproj.Rproj", package = "croquet"),
         filename = stringr::str_glue("{folder_name}.Rproj"),
-        copy = TRUE
+        glue = FALSE
       )),
     env_yaml =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/_env.yaml", package = "croquet"),
         filename = "_env.yaml",
-        copy = FALSE
+        glue = TRUE
       )),
     readme_base =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/readme.md", package = "croquet"),
         filename = "README.md",
-        copy = FALSE
+        glue = TRUE
       )),
     # only add Rprofile if renv was used
     rprofile =
@@ -35,7 +35,7 @@ base_directory_template <-
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/gitignore.txt", package = "croquet"),
         filename = ".gitignore",
-        copy = TRUE
+        glue = FALSE
       ))
   )
 
@@ -46,55 +46,55 @@ sub_directory_template <-
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/readme_subdir.md", package = "croquet"),
         filename = "README.md",
-        copy = FALSE
+        glue = TRUE
       )),
     setup_medidata =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/setup-medidata.qmd", package = "croquet"),
-        filename = stringr::str_glue("setup0-{basename(dirname(path))}-medidata.qmd"),
-        copy = FALSE
+        filename = stringr::str_glue("setup0_{basename(dirname(path))}_medidata.qmd"),
+        glue = TRUE
       )),
     setup =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/setup.qmd", package = "croquet"),
-        filename = stringr::str_glue("setup1-{basename(dirname(path))}-{folder_name}.qmd"),
-        copy = FALSE
+        filename = stringr::str_glue("setup1_{basename(dirname(path))}_{folder_name}.qmd"),
+        glue = TRUE
       )),
     analysis =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/analysis.qmd", package = "croquet"),
-        filename = stringr::str_glue("analysis1-{basename(dirname(path))}-{folder_name}.qmd"),
-        copy = FALSE
+        filename = stringr::str_glue("analysis1_{basename(dirname(path))}_{folder_name}.qmd"),
+        glue = TRUE
       )),
     report =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/report.qmd", package = "croquet"),
-        filename = stringr::str_glue("report1-{basename(dirname(path))}-{folder_name}.qmd"),
-        copy = FALSE
+        filename = stringr::str_glue("report1_{basename(dirname(path))}_{folder_name}.qmd"),
+        glue = TRUE
       )),
     derived_vars =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/derived_variables.xlsx", package = "croquet"),
-        filename = stringr::str_glue("derived_variables.xlsx"),
-        copy = TRUE
+        filename = stringr::str_glue("derived_variables-{basename(dirname(path))}-{folder_name}.xlsx"),
+        glue = FALSE
       )),
     doc_template =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/doc_template.docx", package = "croquet"),
         filename = "templates/doc_template.docx",
-        copy = TRUE
+        glue = FALSE
       )),
     references =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/references.bib", package = "croquet"),
         filename = stringr::str_glue("templates/references.bib"),
-        copy = TRUE
+        glue = FALSE
       )),
     csl =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/european-urology.csl", package = "croquet"),
         filename = "templates/european-urology.csl",
-        copy = TRUE
+        glue = FALSE
       ))
   )
 

@@ -1,5 +1,5 @@
 ---
-title: "{{stringr::str_replace_all(folder_name, stringr::fixed('-'), stringr::fixed(' '))}}"
+title: "{{folder_name}}"
 date: "`r format(Sys.Date(), format='%B %d, %Y')`"
 format:
   html:
