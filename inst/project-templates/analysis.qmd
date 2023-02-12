@@ -18,7 +18,7 @@ embed-resources: true
 ```{r setup}
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
-options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
+options(subdir_name = "{{getOption('croquet.name')}}", openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
 # Analytic Data Import

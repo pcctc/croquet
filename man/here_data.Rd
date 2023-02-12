@@ -5,9 +5,9 @@
 \alias{get_data_date}
 \title{Path to Data Directory}
 \usage{
-here_data(..., .dir_name = getOption("dir_name"))
+here_data(..., .dir_name = getOption("subdir_name"))
 
-get_data_date(.dir_name = getOption("dir_name"))
+get_data_date(.dir_name = getOption("subdir_name"))
 }
 \arguments{
 \item{...}{Path components below the project root, can be empty.

@@ -10,7 +10,7 @@ NULL
 
 #' @export
 #' @rdname here_data
-here_data <- function(..., .dir_name = getOption("dir_name")) {
+here_data <- function(..., .dir_name = getOption("subdir_name")) {
   # import and check settings --------------------------------------------------
   data_date <- get_data_date(.dir_name = .dir_name)
 
@@ -22,21 +22,21 @@ here_data <- function(..., .dir_name = getOption("dir_name")) {
       cli::cli_abort()
   }
 
-  path_data_date <- file.path(path_data, data_date)
+  path_data_date <- file.path(path_data, data_date) |> normalizePath(winslash = "/", mustWork = FALSE)
   if (!dir.exists(path_data_date)) {
-    paste("Cannot use the {.code here_data()} function when the data date directory does not exist {.path {path_data_date}}") %>%
-      cli::cli_abort()
+    paste("The data date directory does not exist: {.path {path_data_date}}") %>%
+      cli::cli_alert_danger()
   }
 
   # return constructed path ----------------------------------------------------
-  final_path <- file.path(path_data_date, ...)
+  final_path <- file.path(path_data_date, ...) |> normalizePath(winslash = "/", mustWork = FALSE)
   .notify_dir_exist(final_path)
   final_path
 }
 
 #' @export
 #' @rdname here_data
-get_data_date <- function(.dir_name = getOption("dir_name")) {
+get_data_date <- function(.dir_name = getOption("subdir_name")) {
   if (!file.exists("_env.yaml")) {
     cli::cli_abort("Cannot use the {.code here_data()} function without the {.path _env.yaml} file in the project root directory.")
   }
@@ -55,6 +55,7 @@ get_data_date <- function(.dir_name = getOption("dir_name")) {
           "in {.path _env.yaml}.") %>%
       cli::cli_abort()
   }
+  data_date
 }
 
 

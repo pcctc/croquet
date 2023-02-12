@@ -11,38 +11,35 @@ NULL
 
 #' @export
 #' @rdname create_pcctc_project
-create_pcctc_project <- function(path, path_data, renv = TRUE, overwrite = NA) {
+create_pcctc_project <- function(path, path_data, renv = TRUE,
+                                 overwrite = NA, open = interactive()) {
   if (missing(path) || missing(path_data)){
     cli::cli_abort("Arguments {.code path} and {.code path_data} must be specified.")
   }
 
   # build the base directory
-  starter::create_project(
-    path = path,
-    path_data = path_data,
-    template = croquet::project_templates[["base"]],
-    git = TRUE,
-    symlink = FALSE,
-    renv = renv,
-    overwrite = overwrite,
-    open = FALSE
+  withr::with_options(
+    new = list("croquet.name" = "data-setup"),
+    code =
+      starter::create_project(
+        path = path,
+        path_data = path_data,
+        template =
+          c(
+            croquet::project_templates[["base"]],
+            croquet::project_templates[["subdirectory"]][setup_directory_files()]
+          ),
+        git = TRUE,
+        symlink = FALSE,
+        renv = renv,
+        overwrite = overwrite,
+        open = open
+      )
   )
-
-  # add subdirectory with data setup folder
-  starter::create_project(
-    path = file.path(path, "data-setup"),
-    template = croquet::project_templates[["subdirectory"]][setup_directory_files()],
-    git = FALSE,
-    symlink = FALSE,
-    renv = FALSE,
-    open = FALSE
-  )
-
-  cli::cli_ul("Navigate to {.path {path}}")
 }
 
 setup_directory_files <- function() {
-  file_to_include <- c("setup", "data_date", "rproj", "rprofile", "readme")
+  file_to_include <- c("setup", "readme")
   if (interactive() && isTRUE(is_medidata())) file_to_include <- c("setup_medidata", file_to_include)
   file_to_include
 }
@@ -57,25 +54,25 @@ is_medidata <- function() {
 add_project_directory <- function(name, overwrite = NA) {
   # TODO: add checks that the parent dir exists, has a git repo, name is a string, anything else?
 
-  # adding entries to the _env file
+  # adding entries to the _env.yaml file
   .add_env_file()
   .add_env_directory_entry(name = name, list(list("data-date"= stringr::str_glue("{Sys.Date()}"))) %>% stats::setNames(name))
-
-  # TODO: add a question to user confirming directory placement!
-  path <- file.path(here::here(), name)
 
   file_to_include <-
     names(croquet::project_templates[["subdirectory"]]) %>%
     setdiff(c("setup", "setup_medidata"))
 
-  starter::create_project(
-    path = path,
-    template =
-      croquet::project_templates[["subdirectory"]][file_to_include],
-    git = FALSE,
-    symlink = FALSE,
-    renv = FALSE,
-    open = FALSE
+  withr::with_options(
+    new = list("croquet.name" = name),
+    starter::create_project(
+      path = path,
+      template =
+        croquet::project_templates[["subdirectory"]][file_to_include],
+      git = FALSE,
+      symlink = FALSE,
+      renv = FALSE,
+      open = FALSE
+    )
   )
 }
 

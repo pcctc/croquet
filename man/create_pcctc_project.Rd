@@ -6,7 +6,13 @@
 \alias{add_project_setup_directory}
 \title{Create PCCTC Project}
 \usage{
-create_pcctc_project(path, path_data, renv = TRUE, overwrite = NA)
+create_pcctc_project(
+  path,
+  path_data,
+  renv = TRUE,
+  overwrite = NA,
+  open = interactive()
+)
 
 add_project_directory(name, overwrite = NA)
 
@@ -26,10 +32,10 @@ Default is \code{TRUE}. When \code{NA} user is asked interactively for preferenc
 if they exist.  Options are
 \code{TRUE}, \code{FALSE}, and \code{NA} (aka ask interactively).  Default is \code{NA}}
 
-\item{name}{name of directory to add to project folder.}
-
 \item{open}{Logical indicating whether to open new project in fresh RStudio
 session}
+
+\item{name}{name of directory to add to project folder.}
 }
 \description{
 Create PCCTC Project

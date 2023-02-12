@@ -26,7 +26,7 @@ csl: templates/european-urology.csl
 #| include: false
 # set chunk defaults, code chunks are NOT printed in output for report
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
-options(subdir_name = "{{folder_name}}", openxlsx.dateFormat = "yyyy-mm-dd")
+options(subdir_name = "{{getOption('croquet.name')}}", openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
 ```{r import}

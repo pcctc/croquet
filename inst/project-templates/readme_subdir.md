@@ -1,4 +1,4 @@
-## {{basename(dirname(path))}} {{folder_name}}
+## {{folder_name}} {{getOption('croquet.name')}} 
 
 ## Project Log
 **{{Sys.Date()}}**
