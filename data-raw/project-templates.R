@@ -107,6 +107,17 @@ sub_directory_template <-
           ),
         glue = FALSE
       )),
+    derived_vars_medidata =
+      rlang::expr(list(
+        template_filename = fs::path_package("project-templates/derived_variables_medidata.xlsx", package = "croquet"),
+        filename =
+          do.call(
+            'file.path',
+            list(getOption("croquet.name"), stringr::str_glue("derived_variables_medidata-{folder_name}.xlsx")) |>
+              purrr::discard(rlang::is_empty)
+          ),
+        glue = FALSE
+      )),
     doc_template =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/doc_template.docx", package = "croquet"),

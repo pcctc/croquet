@@ -40,7 +40,8 @@ create_pcctc_project <- function(path, path_data, renv = TRUE,
 
 setup_directory_files <- function() {
   file_to_include <- c("setup", "readme")
-  if (interactive() && isTRUE(is_medidata())) file_to_include <- c("setup_medidata", file_to_include)
+  if (interactive() && isTRUE(is_medidata()))
+    file_to_include <- c("setup_medidata", "derived_vars_medidata", file_to_include)
   file_to_include
 }
 
