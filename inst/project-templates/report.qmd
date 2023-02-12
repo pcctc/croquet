@@ -41,6 +41,7 @@ load(here_data("results", "results.Rdata"))
 
 ```{r inline_text}
 #| include: false
+data_cut_date <- croquet::get_data_date() |> as.Date() |> format(format = "%B %d, %Y")
 
 # define complex inline-reporting objects here
 ```
@@ -48,6 +49,7 @@ load(here_data("results", "results.Rdata"))
 # Methods
 
 Describe cohort and analytic methods here.
+The data were last updated on `r data_cut_date`.
 
 All analyses were conducted using `r cite_r(pkgs = c("gtsummary", "tidyverse"), add_citation = TRUE)`.
 

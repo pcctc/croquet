@@ -59,3 +59,7 @@ lst_medidata_data <- list()
 #saving cleaned Medidata files
 saveRDS(lst_medidata_data, file = here_data("derived-data", "medidata-cleaned.RDS"))
 ```
+
+::: {style="font-size: 75%;"}
+Data Cut Date: `r croquet::get_data_date()`
+:::

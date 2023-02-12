@@ -5,15 +5,15 @@
 \alias{get_data_date}
 \title{Path to Data Directory}
 \usage{
-here_data(..., .dir_name = getOption("subdir_name"))
+here_data(..., dir_name = getOption("subdir_name"))
 
-get_data_date(.dir_name = getOption("subdir_name"))
+get_data_date(dir_name = getOption("subdir_name"))
 }
 \arguments{
 \item{...}{Path components below the project root, can be empty.
 Each argument should be a string containing one or more path components.}
 
-\item{.dir_name}{name of directory that matches an entry in \verb{_env.yaml}.}
+\item{dir_name}{name of directory that matches an entry in \verb{_env.yaml}.}
 }
 \value{
 a path

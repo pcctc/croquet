@@ -50,3 +50,6 @@ save(
 )
 ```
 
+::: {style="font-size: 75%;"}
+Data Cut Date: `r croquet::get_data_date()`
+:::
