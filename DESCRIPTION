@@ -33,6 +33,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    withr,
     yaml
 Suggests: 
     covr,

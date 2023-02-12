@@ -1,7 +1,7 @@
 #' Create PCCTC Project
 #'
 #' @inheritParams starter::create_project
-#' @param name name of directory to add to project folder.
+#' @param dir_name name of directory to add to project folder.
 #'
 #' @name create_pcctc_project
 #' @author Daniel D. Sjoberg
@@ -51,44 +51,29 @@ is_medidata <- function() {
 
 #' @export
 #' @rdname create_pcctc_project
-add_project_directory <- function(name, overwrite = NA) {
-  # TODO: add checks that the parent dir exists, has a git repo, name is a string, anything else?
+add_project_directory <- function(dir_name, overwrite = NA) {
+  # TODO: add checks that the parent dir exists, has a git repo, dir_name is a string, anything else?
 
   # adding entries to the _env.yaml file
   .add_env_file()
-  .add_env_directory_entry(name = name, list(list("data-date"= stringr::str_glue("{Sys.Date()}"))) %>% stats::setNames(name))
+  .add_env_directory_entry(dir_name = dir_name, list(list("data-date"= stringr::str_glue("{Sys.Date()}"))) %>% stats::setNames(dir_name))
 
   file_to_include <-
     names(croquet::project_templates[["subdirectory"]]) %>%
-    setdiff(c("setup", "setup_medidata"))
+    setdiff(c("setup", "setup_medidata", "derived_vars"))
 
   withr::with_options(
-    new = list("croquet.name" = name),
+    new = list("croquet.name" = dir_name),
     starter::create_project(
-      path = path,
+      path = here::here(),
       template =
         croquet::project_templates[["subdirectory"]][file_to_include],
+      overwrite = overwrite,
       git = FALSE,
       symlink = FALSE,
       renv = FALSE,
       open = FALSE
     )
-  )
-}
-
-#' @export
-#' @rdname create_pcctc_project
-add_project_setup_directory <- function(renv = TRUE, open = TRUE, overwrite = NA) {
-  # add subdirectory with data setup folder
-  name <- "data-setup"
-  .add_env_file()
-  path <- file.path(here::here(), name)
-  starter::create_project(
-    path = file.path(path, name),
-    template = croquet::project_templates[["subdirectory"]][setup_directory_files()],
-    git = FALSE,
-    renv = renv,
-    open = open
   )
 }
 
@@ -110,8 +95,8 @@ add_project_setup_directory <- function(renv = TRUE, open = TRUE, overwrite = NA
   )
 }
 
-.add_env_directory_entry <- function(name, entry = list("data-setup" = list("data-date"= Sys.Date()))) {
-  if (identical(name, "data-setup")) return(invisible())
+.add_env_directory_entry <- function(dir_name, entry = list("data-setup" = list("data-date"= Sys.Date()))) {
+  if (identical(dir_name, "data-setup")) return(invisible())
   cli::cli_alert_success("Adding directory entry to {.path _env.yaml}.")
 
   lst_env <- yaml::yaml.load_file(input = "_env.yaml")

@@ -8,7 +8,7 @@
 \alias{use_pcctc_report}
 \title{Write PCCTC Project File}
 \usage{
-use_pcctc_file(name, filename, open = interactive())
+use_pcctc_file(name = NULL, filename = NULL, open = interactive())
 
 use_pcctc_gitignore(filename = NULL)
 
@@ -19,7 +19,9 @@ use_pcctc_analysis(filename = NULL)
 use_pcctc_report(filename = NULL)
 }
 \arguments{
-\item{name}{name of directory to add to project folder.}
+\item{name}{Name of file to write.  Not sure of the files available to you?
+Run the function without specifying a name, and all files available within the
+template will print.}
 
 \item{filename}{Optional argument to specify the name of the file to be written.
 Paths/filename is relative to project base (e.g. \code{here::here()})}

@@ -3,7 +3,6 @@
 \name{create_pcctc_project}
 \alias{create_pcctc_project}
 \alias{add_project_directory}
-\alias{add_project_setup_directory}
 \title{Create PCCTC Project}
 \usage{
 create_pcctc_project(
@@ -14,9 +13,7 @@ create_pcctc_project(
   open = interactive()
 )
 
-add_project_directory(name, overwrite = NA)
-
-add_project_setup_directory(renv = TRUE, open = TRUE, overwrite = NA)
+add_project_directory(dir_name, overwrite = NA)
 }
 \arguments{
 \item{path}{A path. If it exists, it is used. If it does not exist, it is
@@ -35,7 +32,7 @@ if they exist.  Options are
 \item{open}{Logical indicating whether to open new project in fresh RStudio
 session}
 
-\item{name}{name of directory to add to project folder.}
+\item{dir_name}{name of directory to add to project folder.}
 }
 \description{
 Create PCCTC Project

@@ -7,7 +7,8 @@ test_that("create_pcctc_project() works", {
       path = temp_project_dir,
       path_data = tempdir(),
       renv = FALSE,
-      overwrite = TRUE
+      overwrite = TRUE,
+      open = FALSE
     ),
     NA
   )
@@ -18,7 +19,7 @@ test_that("create_pcctc_project() works", {
       "_env.yaml",
       "c12-3456-trial.Rproj",
       "data-setup/README.md",
-      "data-setup/setup1-c12-3456-trial-data-setup.qmd",
+      "data-setup/setup1_c12-3456-trial_data-setup.qmd",
       "README.md"
     )
   )

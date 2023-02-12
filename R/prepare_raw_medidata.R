@@ -24,11 +24,11 @@ prepare_raw_medidata <- function(x, rename_fn = toupper, retain_datetime = NULL)
 
   x |>
     # convert empty character strings to NA
-    lapply(\(x) x |> dplyr::mutate(dplyr::across(where(is.character), ~tidyr::na_if(., "")))) |>
+    lapply(\(x) x |> dplyr::mutate(dplyr::across(where(is.character), ~dplyr::na_if(., "")))) |>
     # convert all date-time variables to dates only
     lapply(\(x) x |> dplyr::mutate(dplyr::across(where(lubridate::is.POSIXct), lubridate::as_date))) |>
     # convert all date fields stored as unknown / 1900 to missing |>
-    lapply(\(x) x |> dplyr::mutate(dplyr::across(c(where(lubridate::is.Date), -all_of(retain_datetime)), ~dplyr::case_when(lubridate::year(.) == 1900 ~ NA_Date_, TRUE ~ .)))) |>
+    lapply(\(x) x |> dplyr::mutate(dplyr::across(c(where(lubridate::is.Date), -dplyr::all_of(retain_datetime)), ~dplyr::case_when(lubridate::year(.) == 1900 ~ NA_Date_, TRUE ~ .)))) |>
     # make all RAW variables uppercase (or whatever transformation is passed by user)
     lapply(\(x) dplyr::rename_with(x, .fn = rename_fn, .cols = dplyr::everything()))
 }
