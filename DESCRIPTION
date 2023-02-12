@@ -22,7 +22,6 @@ Imports:
     gtsummary,
     here,
     labelled,
-    lubridate,
     magrittr,
     openxlsx,
     purrr,
