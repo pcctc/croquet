@@ -11,22 +11,20 @@ format:
     toc-float: true
     toc-depth: 2
     toc-location: left
-  docx:
-    reference-doc: templates/doc_template.docx
 embed-resources: true
 execute:
   echo: false
   warning: false
   message: false
-bibliography: templates/references.bib
-csl: templates/european-urology.csl
+bibliography: "`r here::here('metadata', 'references.bib')`"
+csl: "`r here::here('metadata', 'european-urology.csl')`"
 ---
 
 ```{r setup}
 #| include: false
 # set chunk defaults, code chunks are NOT printed in output for report
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
-options(subdir_name = "{{getOption('croquet.name')}}", openxlsx.dateFormat = "yyyy-mm-dd")
+options(openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
 ```{r import}

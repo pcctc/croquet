@@ -39,7 +39,7 @@ create_pcctc_project <- function(path, path_data, renv = TRUE,
 }
 
 setup_directory_files <- function() {
-  file_to_include <- c("setup", "readme")
+  file_to_include <- c("setup", "readme", "derived_vars")
   if (interactive() && isTRUE(is_medidata()))
     file_to_include <- c("setup_medidata", "derived_vars_medidata", file_to_include)
   file_to_include
@@ -57,11 +57,10 @@ add_project_directory <- function(dir_name, overwrite = NA) {
 
   # adding entries to the _env.yaml file
   .add_env_file()
-  .add_env_directory_entry(dir_name = dir_name, list(list("data-date"= stringr::str_glue("{Sys.Date()}"))) %>% stats::setNames(dir_name))
 
   file_to_include <-
     names(croquet::project_templates[["subdirectory"]]) %>%
-    setdiff(c("setup", "setup_medidata", "derived_vars"))
+    setdiff(c("setup", "setup_medidata", "derived_vars", "derived_vars_medidata"))
 
   withr::with_options(
     new = list("croquet.name" = dir_name),
@@ -79,9 +78,9 @@ add_project_directory <- function(dir_name, overwrite = NA) {
 }
 
 .add_env_file <- function(path = ".") {
-  if (file.exists("_env.yaml")) return(invisible())
+  if (file.exists(here::here("metadata", "_env.yaml"))) return(invisible())
 
-  cli::cli_alert_info("The {.path _env.yaml} was not found. Adding it now...")
+  cli::cli_alert_info("The {.path metadata/_env.yaml} was not found. Adding it now...")
   path_data <- readline("Enter the path to the data: ")
 
   starter::create_project(
@@ -96,14 +95,3 @@ add_project_directory <- function(dir_name, overwrite = NA) {
   )
 }
 
-.add_env_directory_entry <- function(dir_name, entry = list("data-setup" = list("data-date"= Sys.Date()))) {
-  if (identical(dir_name, "data-setup")) return(invisible())
-  cli::cli_alert_success("Adding directory entry to {.path _env.yaml}.")
-
-  lst_env <- yaml::yaml.load_file(input = "_env.yaml")
-
-  lst_env[["directory"]] <- c(lst_env[["directory"]], entry)
-
-  yaml::write_yaml(x = lst_env, file = "_env.yaml")
-  return(invisible())
-}

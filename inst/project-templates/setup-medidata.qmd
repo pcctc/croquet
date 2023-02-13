@@ -18,7 +18,7 @@ execute:
 ```{r setup}
 #| include: false
 set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
-options(subdir_name = "{{getOption('croquet.name')}}", openxlsx.dateFormat = "yyyy-mm-dd")
+options(openxlsx.dateFormat = "yyyy-mm-dd")
 ```
 
 1. Import all raw Medidata data sets into a list

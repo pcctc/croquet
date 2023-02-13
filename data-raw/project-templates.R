@@ -12,7 +12,7 @@ base_directory_template <-
     env_yaml =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/_env.yaml", package = "croquet"),
-        filename = "_env.yaml",
+        filename = "metadata/_env.yaml",
         glue = TRUE
       )),
     readme_base =
@@ -35,6 +35,18 @@ base_directory_template <-
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/gitignore.txt", package = "croquet"),
         filename = ".gitignore",
+        glue = FALSE
+      )),
+    references =
+      rlang::expr(list(
+        template_filename = fs::path_package("project-templates/references.bib", package = "croquet"),
+        filename = "metadata/references.bib",
+        glue = FALSE
+      )),
+    csl =
+      rlang::expr(list(
+        template_filename = fs::path_package("project-templates/european-urology.csl", package = "croquet"),
+        filename = "metadata/european-urology.csl",
         glue = FALSE
       ))
   )
@@ -114,39 +126,6 @@ sub_directory_template <-
           do.call(
             'file.path',
             list(getOption("croquet.name"), stringr::str_glue("derived_variables_medidata-{folder_name}.xlsx")) |>
-              purrr::discard(rlang::is_empty)
-          ),
-        glue = FALSE
-      )),
-    doc_template =
-      rlang::expr(list(
-        template_filename = fs::path_package("project-templates/doc_template.docx", package = "croquet"),
-        filename =
-          do.call(
-            'file.path',
-            list(getOption("croquet.name"), "templates", "doc_template.docx") |>
-              purrr::discard(rlang::is_empty)
-          ),
-        glue = FALSE
-      )),
-    references =
-      rlang::expr(list(
-        template_filename = fs::path_package("project-templates/references.bib", package = "croquet"),
-        filename =
-          do.call(
-            'file.path',
-            list(getOption("croquet.name"), "templates", "references.bib") |>
-              purrr::discard(rlang::is_empty)
-          ),
-        glue = FALSE
-      )),
-    csl =
-      rlang::expr(list(
-        template_filename = fs::path_package("project-templates/european-urology.csl", package = "croquet"),
-        filename =
-          do.call(
-            'file.path',
-            list(getOption("croquet.name"), "templates", "european-urology.csl") |>
               purrr::discard(rlang::is_empty)
           ),
         glue = FALSE
