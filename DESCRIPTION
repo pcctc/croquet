@@ -1,6 +1,6 @@
 Package: croquet
 Title: Miscellaneous Operations For PCCTC
-Version: 0.1.0.9000
+Version: 0.2.0
 Authors@R: c(
     person("Shannon", "Pileggi", , "pileggis@mskcc.org", role = c("aut", "cre")),
     person("Travis", "Gerke", , "gerket@mskcc.org", role = "aut")
