@@ -22,7 +22,10 @@
 #' ├── 03-data-review
 #' │   ├── README.md
 #' │   └── analysis1_data-reviews-pointblank.qmd
-#' ├── 04-trial-aims
+#' ├── 04-visit-reports
+#' │   ├── README.md
+#' │   └── report1_visit-reports.qmd
+#' ├── 05-trial-aims
 #' │   ├── README.md
 #' │   ├── analysis1_trial-aims-consort.qmd
 #' │   ├── analysis2_trial-aims-safety.qmd
@@ -51,7 +54,7 @@ create_pcctc_project <- function(path, path_data, renv = TRUE,
 
   # build the base directory
   withr::with_options(
-    new = list("croquet.name" = "data-setup"),
+    new = list("croquet.name" = "01-data-setup"),
     code =
       starter::create_project(
         path = path,
@@ -84,7 +87,7 @@ is_medidata <- function() {
 
 #' @export
 #' @rdname create_pcctc_project
-add_project_directory <- function(overwrite = NA) {
+add_project_directory <- function(dir_name, overwrite = NA) {
   # TODO: add checks that the parent dir exists, has a git repo, dir_name is a string, anything else?
 
   # adding entries to the _env.yaml file

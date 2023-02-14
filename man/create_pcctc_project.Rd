@@ -53,10 +53,13 @@ A typical project directory will look like this:
 │   ├── README.md
 │   ├── analysis1_metrics.qmd
 │   └── report1_metrics.qmd
-├── 03-data-reviews
+├── 03-data-review
 │   ├── README.md
 │   └── analysis1_data-reviews-pointblank.qmd
-├── 04-trial-aims
+├── 04-visit-reports
+│   ├── README.md
+│   └── report1_visit-reports.qmd
+├── 05-trial-aims
 │   ├── README.md
 │   ├── analysis1_trial-aims-consort.qmd
 │   ├── analysis2_trial-aims-safety.qmd
