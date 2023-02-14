@@ -1,4 +1,6 @@
-#' Path to Data Directory
+#' Path to Data Date Directory
+#'
+#' The date of the directory is imported from `_metadata/_env.yaml`.
 #'
 #' @param ... Path components below the project root, can be empty.
 #' Each argument should be a string containing one or more path components.
@@ -13,11 +15,11 @@ here_data <- function(...) {
   # import and check settings --------------------------------------------------
   data_date <- get_data_date()
 
-  env_yaml <- yaml::yaml.load_file(input = here::here("metadata", "_env.yaml"))
+  env_yaml <- yaml::yaml.load_file(input = here::here("_metadata", "_env.yaml"))
   path_data <- env_yaml[["path-data"]]
   if (rlang::is_empty(path_data) || !dir.exists(path_data)) {
-    paste("Cannot use the {.code here_data()} function without the {.field path-data: data-date} field set",
-          "in {.path metadata/_env.yaml} AND this path must exist.") %>%
+    paste("Cannot use the {.code here_data()} function without the {.field path-data} field set",
+          "in {.path _metadata/_env.yaml} AND this path must exist.") %>%
       cli::cli_abort()
   }
 
@@ -36,15 +38,15 @@ here_data <- function(...) {
 #' @export
 #' @rdname here_data
 get_data_date <- function() {
-  if (!file.exists(here::here("metadata", "_env.yaml"))) {
-    cli::cli_abort("Cannot use the {.code here_data()} function without the {.path metadata/_env.yaml} file in the project root directory.")
+  if (!file.exists(here::here("_metadata", "_env.yaml"))) {
+    cli::cli_abort("Cannot use the {.code here_data()} function without the {.path _metadata/_env.yaml} file.")
   }
-  env_yaml <- yaml::yaml.load_file(input = here::here("metadata", "_env.yaml"))
+  env_yaml <- yaml::yaml.load_file(input = here::here("_metadata", "_env.yaml"))
 
   data_date <- env_yaml[["data-date"]]
   if (rlang::is_empty(data_date)) {
     paste("Cannot use the {.code here_data()} function without the {.field data-date} field set",
-          "in {.path metadata/_env.yaml}.") %>%
+          "in {.path _metadata/_env.yaml}.") %>%
       cli::cli_abort()
   }
   data_date

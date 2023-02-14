@@ -3,7 +3,7 @@
 \name{here_data}
 \alias{here_data}
 \alias{get_data_date}
-\title{Path to Data Directory}
+\title{Path to Data Date Directory}
 \usage{
 here_data(...)
 
@@ -17,5 +17,5 @@ Each argument should be a string containing one or more path components.}
 a path
 }
 \description{
-Path to Data Directory
+The date of the directory is imported from \verb{_metadata/_env.yaml}.
 }

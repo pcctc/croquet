@@ -12,7 +12,7 @@ base_directory_template <-
     env_yaml =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/_env.yaml", package = "croquet"),
-        filename = "metadata/_env.yaml",
+        filename = "_metadata/_env.yaml",
         glue = TRUE
       )),
     readme_base =
@@ -40,13 +40,13 @@ base_directory_template <-
     references =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/references.bib", package = "croquet"),
-        filename = "metadata/references.bib",
+        filename = "_metadata/references.bib",
         glue = FALSE
       )),
     csl =
       rlang::expr(list(
         template_filename = fs::path_package("project-templates/european-urology.csl", package = "croquet"),
-        filename = "metadata/european-urology.csl",
+        filename = "_metadata/european-urology.csl",
         glue = FALSE
       ))
   )
@@ -70,7 +70,7 @@ sub_directory_template <-
         filename =
           do.call(
             'file.path',
-            list(getOption("croquet.name"), stringr::str_glue("setup0_{folder_name}_medidata.qmd")) |>
+            list(getOption("croquet.name"), stringr::str_glue("setup0_{sub('^c\\\\d{2}-\\\\d{3}-', '', folder_name)}_medidata.qmd")) |>
               purrr::discard(rlang::is_empty)
           ),
         glue = TRUE
@@ -81,7 +81,7 @@ sub_directory_template <-
         filename =
           do.call(
             'file.path',
-            list(getOption("croquet.name"), stringr::str_glue("setup1_{folder_name}_{getOption('croquet.name')}.qmd")) |>
+            list(getOption("croquet.name"), stringr::str_glue("setup1_{sub('^c\\\\d{2}-\\\\d{3}-', '', folder_name)}.qmd")) |>
               purrr::discard(rlang::is_empty)
           ),
         glue = TRUE
@@ -92,7 +92,7 @@ sub_directory_template <-
         filename =
           do.call(
             'file.path',
-            list(getOption("croquet.name"), stringr::str_glue("analysis1_{folder_name}_{getOption('croquet.name')}.qmd")) |>
+            list(getOption("croquet.name"), stringr::str_glue("analysis1_{sub('^c\\\\d{2}-\\\\d{3}-', '', folder_name)}_{sub('^\\\\d{2}-', '', getOption('croquet.name'))}.qmd")) |>
               purrr::discard(rlang::is_empty)
           ),
         glue = TRUE
@@ -103,7 +103,7 @@ sub_directory_template <-
         filename =
           do.call(
             'file.path',
-            list(getOption("croquet.name"), stringr::str_glue("report1_{folder_name}_{getOption('croquet.name')}.qmd")) |>
+            list(getOption("croquet.name"), stringr::str_glue("report1_{sub('^c\\\\d{2}-\\\\d{3}-', '', folder_name)}_{sub('^\\\\d{2}-', '', getOption('croquet.name'))}.qmd")) |>
               purrr::discard(rlang::is_empty)
           ),
         glue = TRUE
@@ -114,7 +114,7 @@ sub_directory_template <-
         filename =
           do.call(
             'file.path',
-            list(getOption("croquet.name"), stringr::str_glue("derived_variables-{folder_name}_{getOption('croquet.name')}.xlsx")) |>
+            list(getOption("croquet.name"), stringr::str_glue("derived-variables_{sub('^c\\\\d{2}-\\\\d{3}-', '', folder_name)}.xlsx")) |>
               purrr::discard(rlang::is_empty)
           ),
         glue = FALSE
@@ -125,7 +125,7 @@ sub_directory_template <-
         filename =
           do.call(
             'file.path',
-            list(getOption("croquet.name"), stringr::str_glue("derived_variables_medidata-{folder_name}.xlsx")) |>
+            list(getOption("croquet.name"), stringr::str_glue("derived-variables_{sub('^c\\\\d{2}-\\\\d{3}-', '', folder_name)}_medidata.xlsx")) |>
               purrr::discard(rlang::is_empty)
           ),
         glue = FALSE

@@ -1,11 +1,43 @@
 #' Create PCCTC Project
 #'
+#' @description
+#' A typical project directory will look like this:
+#' ```
+#' ├── .git
+#' ├── README.md
+#' ├── _metadata
+#' │   ├── _env.yaml
+#' │   ├── european-urology.csl
+#' │   └── references.bib
+#' ├── 01-data-setup
+#' │   ├── README.md
+#' │   ├── setup0_data-setup_medidata.qmd
+#' │   ├── setup1_data-setup.qmd
+#' │   ├── setup2_data-setup_progression.qmd
+#' │   └── derived-variables_data-setup.xlsx
+#' ├── 02-metrics
+#' │   ├── README.md
+#' │   ├── analysis1_metrics.qmd
+#' │   └── report1_metrics.qmd
+#' ├── 03-data-review
+#' │   ├── README.md
+#' │   └── analysis1_data-reviews-pointblank.qmd
+#' ├── 04-trial-aims
+#' │   ├── README.md
+#' │   ├── analysis1_trial-aims-consort.qmd
+#' │   ├── analysis2_trial-aims-safety.qmd
+#' │   ├── analysis3_trial-aims-primary-aims.qmd
+#' │   ├── report1_trial-aims-consort.qmd
+#' │   ├── report2_trial-aims-safety.qmd
+#' │   └── report3_trial-aims-primary-aims.qmd
+#' ```
+#'
 #' @inheritParams starter::create_project
 #' @param dir_name name of directory to add to project folder.
 #'
 #' @name create_pcctc_project
 #' @author Daniel D. Sjoberg
-#' @examples
+#' @examplesIf FALSE
 #' # add example
 NULL
 
@@ -52,7 +84,7 @@ is_medidata <- function() {
 
 #' @export
 #' @rdname create_pcctc_project
-add_project_directory <- function(dir_name, overwrite = NA) {
+add_project_directory <- function(overwrite = NA) {
   # TODO: add checks that the parent dir exists, has a git repo, dir_name is a string, anything else?
 
   # adding entries to the _env.yaml file
@@ -78,9 +110,9 @@ add_project_directory <- function(dir_name, overwrite = NA) {
 }
 
 .add_env_file <- function(path = ".") {
-  if (file.exists(here::here("metadata", "_env.yaml"))) return(invisible())
+  if (file.exists(here::here("_metadata", "_env.yaml"))) return(invisible())
 
-  cli::cli_alert_info("The {.path metadata/_env.yaml} was not found. Adding it now...")
+  cli::cli_alert_info("The {.path _metadata/_env.yaml} was not found. Adding it now...")
   path_data <- readline("Enter the path to the data: ")
 
   starter::create_project(

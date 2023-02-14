@@ -35,10 +35,41 @@ session}
 \item{dir_name}{name of directory to add to project folder.}
 }
 \description{
-Create PCCTC Project
+A typical project directory will look like this:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{├── .git
+├── README.md
+├── _metadata
+│   ├── _env.yaml
+│   ├── european-urology.csl
+│   └── references.bib
+├── 01-data-setup
+│   ├── README.md
+│   ├── setup0_data-setup_medidata.qmd
+│   ├── setup1_data-setup.qmd
+│   ├── setup2_data-setup_progression.qmd
+│   └── derived-variables_data-setup.xlsx
+├── 02-metrics
+│   ├── README.md
+│   ├── analysis1_metrics.qmd
+│   └── report1_metrics.qmd
+├── 03-data-reviews
+│   ├── README.md
+│   └── analysis1_data-reviews-pointblank.qmd
+├── 04-trial-aims
+│   ├── README.md
+│   ├── analysis1_trial-aims-consort.qmd
+│   ├── analysis2_trial-aims-safety.qmd
+│   ├── analysis3_trial-aims-primary-aims.qmd
+│   ├── report1_trial-aims-consort.qmd
+│   ├── report2_trial-aims-safety.qmd
+│   └── report3_trial-aims-primary-aims.qmd
+}\if{html}{\out{</div>}}
 }
 \examples{
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # add example
+\dontshow{\}) # examplesIf}
 }
 \author{
 Daniel D. Sjoberg
