@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="index.html">croquet</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,7 +162,7 @@ Screenshot of resulting excel output.
 <p>This imports a single sheet that assumes variables labels are in row 1 and variable names are row 2. You can optionally specify a regex expression for <code>date_detect</code> to identify variables that should be explicitly imported as a date.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_labelled_sheet.html">read_labelled_sheet</a></span><span class="op">(</span></span>
-<span>  path <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="va">path</span>, <span class="va">dsn1</span><span class="op">)</span>,</span>
+<span>  path <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">dsn1</span><span class="op">)</span>,</span>
 <span>  sheet <span class="op">=</span> <span class="st">"ae_listings"</span>,</span>
 <span>  date_detect <span class="op">=</span> <span class="st">"cyc1_visdat|cyc2_visdat"</span></span>
 <span><span class="op">)</span></span></code></pre></div>

@@ -22,6 +22,12 @@
     <loc>https://pcctc.github.io/croquet/dev/reference/add_labelled_sheet.html</loc>
   </url>
   <url>
+    <loc>https://pcctc.github.io/croquet/dev/reference/cite_r.html</loc>
+  </url>
+  <url>
+    <loc>https://pcctc.github.io/croquet/dev/reference/create_pcctc_project.html</loc>
+  </url>
+  <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/croquet-package.html</loc>
   </url>
   <url>
@@ -31,6 +37,9 @@
     <loc>https://pcctc.github.io/croquet/dev/reference/group_split_named.html</loc>
   </url>
   <url>
+    <loc>https://pcctc.github.io/croquet/dev/reference/here_data.html</loc>
+  </url>
+  <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/index.html</loc>
   </url>
   <url>
@@ -38,6 +47,9 @@
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://pcctc.github.io/croquet/dev/reference/project_templates.html</loc>
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/read_labelled_sheet.html</loc>
@@ -52,10 +64,16 @@
     <loc>https://pcctc.github.io/croquet/dev/reference/select_helpers.html</loc>
   </url>
   <url>
+    <loc>https://pcctc.github.io/croquet/dev/reference/set_derived_variable_labels.html</loc>
+  </url>
+  <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/theme_gtsummary_pcctc.html</loc>
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/tidyeval.html</loc>
+  </url>
+  <url>
+    <loc>https://pcctc.github.io/croquet/dev/reference/use_pcctc_file.html</loc>
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/use_pcctc_rstudio_prefs.html</loc>
