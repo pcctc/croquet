@@ -6,6 +6,8 @@
 
 * Re-exporting the `dplyr::select()` function.
 
+* Re-exporting the `here::here()` function.
+
 # croquet 0.1.0
 
 * Initial release.
