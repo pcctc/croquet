@@ -1,0 +1,2 @@
+path-data: '{{path_data}}'
+data-date: '{{Sys.Date()}}'

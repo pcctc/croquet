@@ -1,0 +1,65 @@
+---
+title: "{{folder_name}}"
+subtitle: "Medidata Setup"
+date: "`r Sys.Date()`"
+format:
+  html:
+    page-layout: full
+    theme: united
+    toc: true
+    toc-float: true
+    toc-depth: 2
+    toc-location: left
+embed-resources: true
+execute: 
+  echo: true
+---
+
+```{r setup}
+#| include: false
+set.seed({{format(Sys.Date(), format = "%Y%m%d")}})
+options(openxlsx.dateFormat = "yyyy-mm-dd")
+```
+
+1. Import all raw Medidata data sets into a list
+
+1. Clean each of the Medidata data sets individually as needed. There are no changes to the structure of these data sets in this step, meaning that if a raw data set is one line per person per AE, the cleaned data set will have the same structure.
+
+1. The RAW Medidata is imported as a named list. After an individual data set is cleaned/checked, it is added to a named list.
+
+# Raw Data Import
+
+```{r import}
+library(dsverse); library(tidyverse)
+
+# setting MSK ggplot theme, gtsummary theme, and color palette
+theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_palette()
+
+# import sas files
+lst_medidata_raw_data <-
+  read_sas_batch(here_data("data-raw")) %>%
+  prepare_raw_medidata() %>%
+  set_drs_variable_labels()
+names(lst_medidata_raw_data)
+
+# save cleaned medidata files into this named list.
+lst_medidata_data <- list()
+
+```
+
+# Clean each Medidata Data Set
+
+```{r cleaning}
+
+```
+
+# Save Analytic Data
+
+```{r save}
+#saving cleaned Medidata files
+saveRDS(lst_medidata_data, file = here_data("derived-data", "medidata-cleaned.RDS"))
+```
+
+::: {style="font-size: 75%;"}
+Data Cut Date: `r croquet::get_data_date()`
+:::
