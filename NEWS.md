@@ -1,4 +1,4 @@
-# croquet (development version)
+# croquet 0.2.1
 
 * Fix to derived variables label Excel file path in setup template file.
 
