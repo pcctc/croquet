@@ -1,3 +1,7 @@
+# croquet (development version)
+
+* Fix to derived variables label Excel file path in setup template file.
+
 # croquet 0.2.0
 
 * Added a draft of the project template, including new functions `create_pcctc_project()`, `add_project_directory()`, `use_pcctc_file()`, `use_pcctc_analysis()`, `use_pcctc_setup()`, `use_pcctc_report()`, `use_pcctc_gitignore()`.
