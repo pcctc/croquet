@@ -54,7 +54,8 @@ create_pcctc_project <- function(path, path_data, renv = TRUE,
 
   # build the base directory
   withr::with_options(
-    new = list("croquet.name" = "01-data-setup"),
+    new = list("croquet.name" = "01-data-setup",
+               "croquet.data_storage_type" = .data_storage_type()),
     code =
       starter::create_project(
         path = path,
@@ -129,4 +130,17 @@ add_project_directory <- function(dir_name, overwrite = NA) {
     open = FALSE
   )
 }
+
+
+.data_storage_type <- function() {
+  switch(
+    interactive() %>% as.character(),
+    "TRUE" =
+      utils::menu(c("Local or Mapped Network Drive", "Sharepoint"),
+                  title = "Where is the project data stored?") %>%
+      dplyr::recode("1" = "local_data", "2" = "sharepoint"),
+    "FALSE" = "local_data"
+  )
+}
+
 
