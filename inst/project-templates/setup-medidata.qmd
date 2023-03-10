@@ -37,14 +37,12 @@ theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_p
 
 # import sas files
 lst_medidata_raw_data <-
-  read_sas_batch(here_data("data-raw")) %>%
-  prepare_raw_medidata() %>%
-  set_drs_variable_labels()
+  read_sas_batch(here_data("raw-edc-data")) %>%
+  prepare_raw_medidata()
 names(lst_medidata_raw_data)
 
 # save cleaned medidata files into this named list.
 lst_medidata_data <- list()
-
 ```
 
 # Clean each Medidata Data Set
@@ -57,9 +55,10 @@ lst_medidata_data <- list()
 
 ```{r save}
 #saving cleaned Medidata files
-saveRDS(lst_medidata_data, file = here_data("derived-data", "medidata-cleaned.RDS"))
+saveRDS(lst_medidata_data, file = here_data("derived-data", "medidata-cleaned.RDS")) |> 
+  pcctc::sp_upload_file()
 ```
 
 ::: {style="font-size: 75%;"}
-Data Cut Date: `r croquet::get_data_date()`
+Data Cut Date: `r get_data_date()`
 :::
