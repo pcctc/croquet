@@ -124,7 +124,7 @@ add_project_directory <- function(dir_name, overwrite = NA) {
   browser()
   # get vector of dir names that start with "01-", "02-", etc.
   dirs_that_exist <-
-    list.dirs(path = here::here(), recursive = FALSE) |>
+    list.dirs(path = here::here(), recursive = FALSE, full.names = FALSE) |>
     purrr::keep(~stringr::str_detect(., "^\\d{2}-"))
 
   # assign the new dir name ID prefix
