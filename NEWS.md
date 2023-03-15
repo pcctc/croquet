@@ -1,5 +1,9 @@
 # croquet (development version)
 
+* Migrated `here_data()` to an internal package.
+
+* Updated project template to work with data saved in SharePoint.
+
 # croquet 0.2.1
 
 * Fix to derived variables label Excel file path in setup template file.

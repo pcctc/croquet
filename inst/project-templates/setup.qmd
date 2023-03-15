@@ -62,9 +62,10 @@ df_main <- df_main %>%
 skimr::skim(df_main)
 
 #saving master analytic data set
-save(df_main, here_data("derived-data", "raw-data-cleaned.Rdata"))
+save(df_main, here_data("derived-data", "df_main.Rdata")) |> 
+  sp_upload_file()
 ```
 
 ::: {style="font-size: 75%;"}
-Data Cut Date: `r croquet::get_data_date()`
+Data Cut Date: `r get_data_date()`
 :::

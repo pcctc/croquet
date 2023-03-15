@@ -30,7 +30,7 @@ library(dsverse); library(tidyverse)
 theme_set(mskRvis::theme_biostat()); theme_gtsummary_pcctc(); mskRvis::set_msk_palette()
 
 # importing master analytic data set
-load(df_main, here_data("derived-data", "raw-data-cleaned.Rdata"))
+load(file = here_data("derived-data", "raw-data-cleaned.Rdata"))
 ```
 
 
@@ -47,9 +47,10 @@ load(df_main, here_data("derived-data", "raw-data-cleaned.Rdata"))
 save(
   df_results, gt_table1,
   file = here_data("results", "results.Rdata")
-)
+) |> 
+  sp_upload_file()
 ```
 
 ::: {style="font-size: 75%;"}
-Data Cut Date: `r croquet::get_data_date()`
+Data Cut Date: `r get_data_date()`
 :::

@@ -16,8 +16,8 @@ execute:
   echo: false
   warning: false
   message: false
-bibliography: "`r here::here('metadata', 'references.bib')`"
-csl: "`r here::here('metadata', 'european-urology.csl')`"
+bibliography: "`r here::here('_metadata', 'references.bib')`"
+csl: "`r here::here('_metadata', 'european-urology.csl')`"
 ---
 
 ```{r setup}
