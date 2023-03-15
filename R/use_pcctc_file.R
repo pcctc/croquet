@@ -30,6 +30,7 @@ use_pcctc_file <- function(name = NULL, filename = NULL, open = interactive()) {
   }
 
   # set name and suddirectory as needed
+  browser()
   dir_name <- .select_subdirectory(path = here::here())
 
   # select a filename
