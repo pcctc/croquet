@@ -23,8 +23,7 @@ use_pcctc_report(filename = NULL)
 Run the function without specifying a name, and all files available within the
 template will print.}
 
-\item{filename}{Optional argument to specify the name of the file to be written.
-Paths/filename is relative to project base (e.g. \code{here::here()})}
+\item{filename}{Optional argument to specify the name of the file to be written.}
 
 \item{open}{Logical indicating whether to open new project in fresh RStudio
 session}

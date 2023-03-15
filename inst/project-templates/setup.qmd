@@ -62,7 +62,8 @@ df_main <- df_main %>%
 skimr::skim(df_main)
 
 #saving master analytic data set
-save(df_main, here_data("derived-data", "df_main.Rdata"))
+save(df_main, here_data("derived-data", "df_main.Rdata")) |> 
+  sp_upload_file()
 ```
 
 ::: {style="font-size: 75%;"}

@@ -56,7 +56,7 @@ lst_medidata_data <- list()
 ```{r save}
 #saving cleaned Medidata files
 saveRDS(lst_medidata_data, file = here_data("derived-data", "medidata-cleaned.RDS")) |> 
-  pcctc::sp_upload_file()
+  sp_upload_file()
 ```
 
 ::: {style="font-size: 75%;"}
