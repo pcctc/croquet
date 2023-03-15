@@ -89,7 +89,10 @@ is_medidata <- function() {
 #' @export
 #' @rdname create_pcctc_project
 add_project_directory <- function(dir_name, overwrite = NA) {
-  # TODO: add checks that the parent dir exists, has a git repo, dir_name is a string, anything else?
+  if (!interactive()) {
+    cli::cli_inform(c("!" = "This function must be run interactively."))
+    return(invisible())
+  }
 
   # adding entries to the _env.yaml file
   .add_env_file()
@@ -97,6 +100,10 @@ add_project_directory <- function(dir_name, overwrite = NA) {
   file_to_include <-
     names(croquet::project_templates[["subdirectory"]]) %>%
     setdiff(c("setup", "setup_medidata", "derived_vars", "derived_vars_medidata"))
+
+  if (missing(dir_name)) {
+    dir_name <- .select_dirname()
+  }
 
   withr::with_options(
     new = list("croquet.name" = dir_name),
@@ -111,6 +118,40 @@ add_project_directory <- function(dir_name, overwrite = NA) {
       open = FALSE
     )
   )
+}
+
+.select_dirname <- function() {
+  # get vector of dir names that start with "01-", "02-", etc.
+  dirs_that_exist <-
+    list.dirs(path = here::here(), recursive = FALSE) |>
+    purrr::keep(~stringr::str_detect(., "^\\d{2}-"))
+
+  # assign the new dir name ID prefix
+  folder_id <-
+    dirs_that_exist |>
+    stringr::str_remove("^\\d{2}") |>
+    as.integer() %>%
+    {ifelse(rlang::is_empty(.) || is.na(.), 0L, .)} %>%
+    `+`(1L) |>
+    stringr::str_pad(width = 2, pad = "0", side = "left")
+
+  # get list of common dir names to suggest to user
+  potential_dirnames <-
+    c("data-setup", "metrics", "data-review", "visit-reports", "trial-aims",
+      "<something_else>") |>
+    setdiff(stringr::str_remove(dirs_that_exist, "^\\d{2}-")) %>%
+    {paste(folder_id, ., sep = "-")}
+
+  # ask the user which folder name they would like to use
+  cli::cli_alert_info("What would you like to call the new directory?")
+  final_dirname <- potential_dirnames[utils::menu(potential_dirnames)]
+
+  if (stringr::str_detect(final_dirname, "-<something_else>$")) {
+    final_dirname <- paste(folder_id, readline("Specify directory name (folder number will be prefixed): "), sep = "-")
+  }
+
+  # return new dir name
+  final_dirname
 }
 
 .add_env_file <- function(path = ".") {
