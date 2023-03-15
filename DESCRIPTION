@@ -20,7 +20,7 @@ Imports:
     fs,
     glue,
     gt,
-    gtsummary,
+    gtsummary (>= 1.7.0),
     here,
     labelled,
     magrittr,
