@@ -1,6 +1,6 @@
 # croquet (development version)
 
-* Updated the PCCTC gtsummary theme to place levels and cohort size on separate lines in the headers of `gtsummary::tbl_summary(by=)`. The cohort sizes presented in the header are also now formatted with `gtsummary::style_number()`.
+* Updated the PCCTC gtsummary theme to place levels and cohort size on separate lines in the headers of `gtsummary::tbl_summary(by=)`. The cohort sizes presented in the header are also now formatted with `gtsummary::style_number()`. (#23)
 
 * Migrated `here_data()` to an internal package.
 
