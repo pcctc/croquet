@@ -130,9 +130,9 @@ add_project_directory <- function(dir_name, overwrite = NA) {
   # assign the new dir name ID prefix
   folder_id <-
     dirs_that_exist |>
-    stringr::str_remove("^\\d{2}") |>
+    stringr::str_extract("^\\d{2}") |>
     as.integer() %>%
-    {ifelse(rlang::is_empty(.) || is.na(.), 0L, .)} %>%
+    {ifelse(rlang::is_empty(.) || any(is.na(.)), 0L, max(.))} %>%
     `+`(1L) |>
     stringr::str_pad(width = 2, pad = "0", side = "left")
 
