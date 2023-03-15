@@ -30,7 +30,7 @@ use_pcctc_file <- function(name = NULL, filename = NULL, open = interactive()) {
   }
 
   # set name and suddirectory as needed
-  dirname <- .select_subdirectory(path = here::here())
+  dir_name <- .select_subdirectory(path = here::here())
 
   # select a filename
   filename <-
@@ -42,7 +42,7 @@ use_pcctc_file <- function(name = NULL, filename = NULL, open = interactive()) {
   withr::with_options(
     new = list("croquet.name" = dirname),
     starter::use_project_file(name = name,
-                              filename = fs::path(dirname, filename),
+                              filename = fs::path(dir_name, filename),
                               template = template,
                               open = open)
   )
