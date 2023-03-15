@@ -121,6 +121,7 @@ add_project_directory <- function(dir_name, overwrite = NA) {
 }
 
 .select_dirname <- function() {
+  browser()
   # get vector of dir names that start with "01-", "02-", etc.
   dirs_that_exist <-
     list.dirs(path = here::here(), recursive = FALSE) |>
