@@ -41,7 +41,7 @@ use_pcctc_file <- function(name = NULL, filename = NULL, open = interactive()) {
 
 
   withr::with_options(
-    new = list("croquet.name" = dirname),
+    new = list("croquet.name" = dir_name),
     starter::use_project_file(name = name,
                               filename = fs::path(dir_name, filename),
                               template = template,
