@@ -66,7 +66,12 @@ use_pcctc_file <- function(name = NULL, filename = NULL, open = interactive()) {
     stringr::word(1L, sep = "_") |>
     stringr::str_extract("\\d$") |>
     as.integer() %>%
-    `+`(1L)
+    `+`(1L) |>
+    max()
+
+  if (rlang::is_empty(file_id) || is.na(file_id)) {
+    return(basename(default_filename))
+  }
 
   # updated filename
   basename(default_filename) |>
