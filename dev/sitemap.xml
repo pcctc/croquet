@@ -25,9 +25,6 @@
     <loc>https://pcctc.github.io/croquet/dev/reference/cite_r.html</loc>
   </url>
   <url>
-    <loc>https://pcctc.github.io/croquet/dev/reference/create_pcctc_project.html</loc>
-  </url>
-  <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/croquet-package.html</loc>
   </url>
   <url>
@@ -44,9 +41,6 @@
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://pcctc.github.io/croquet/dev/reference/project_templates.html</loc>
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/read_labelled_sheet.html</loc>
@@ -68,9 +62,6 @@
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/tidyeval.html</loc>
-  </url>
-  <url>
-    <loc>https://pcctc.github.io/croquet/dev/reference/use_pcctc_file.html</loc>
   </url>
   <url>
     <loc>https://pcctc.github.io/croquet/dev/reference/use_pcctc_rstudio_prefs.html</loc>
