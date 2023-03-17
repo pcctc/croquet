@@ -1,6 +1,6 @@
 # croquet (development version)
 
-* Migrated `here_data()` to an internal package.
+* Migrated `here_data()` and all project template functions and data objects to an internal package.
 
 * Updated project template to work with data saved in SharePoint.
 

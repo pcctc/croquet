@@ -1,3 +1,0 @@
-path-data: '{{path_data}}'
-data-date: '{{Sys.Date()}}'
-data-storage-type: '{{getOption("croquet.data_storage_type")}}'
