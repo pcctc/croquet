@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 A collection of clinical research organization (CRO) miscellaneous functions 
-developed for [The Prostate Cancer Clinical Trials Consortium (PCCTC)](http://pcctc.org/).
+developed for [The Prostate Cancer Clinical Trials Consortium (PCCTC)](https://pcctc.org/).
 
 ## Installation
 

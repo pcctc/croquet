@@ -4,7 +4,7 @@
 \name{croquet-package}
 \alias{croquet}
 \alias{croquet-package}
-\title{croquet: Miscellaneous Operations For PCCTC}
+\title{croquet: Miscellaneous Operations for PCCTC}
 \description{
 Miscellaneous operations for PCCTC, a Clinical Research Organization (CRO).
 }
