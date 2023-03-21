@@ -1,4 +1,4 @@
-# croquet (development version)
+# croquet 0.3.0
 
 * Migrated `here_data()` and all project template functions and data objects to an internal package.
 
