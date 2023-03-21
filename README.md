@@ -16,7 +16,7 @@ coverage](https://codecov.io/gh/pcctc/croquet/branch/main/graph/badge.svg)](http
 
 A collection of clinical research organization (CRO) miscellaneous
 functions developed for [The Prostate Cancer Clinical Trials Consortium
-(PCCTC)](http://pcctc.org/).
+(PCCTC)](https://pcctc.org/).
 
 ## Installation
 
