@@ -15,7 +15,9 @@ theme_gtsummary_pcctc <- function(font_size = NULL) {
   lst_theme_pcctc <-
     gtsummary::theme_gtsummary_compact(set_theme = FALSE, font_size = font_size) %>%
     utils::modifyList(
-      val = list("pkgwide-str:theme_name" = "PCCTC"))
+      val = list("pkgwide-str:theme_name" = "PCCTC",
+                 "tbl_summary-str:header-noby" = "**N = {gtsummary::style_number(N)}**",
+                 "tbl_summary-str:header-withby" = "**{level}**  \nN = {gtsummary::style_number(n)}"))
 
   # modify the default font
   lst_theme_pcctc$`as_flex_table-lst:addl_cmds`$valign <-
