@@ -15,7 +15,7 @@ Depends:
 Imports: 
     broom.helpers,
     cli,
-    dplyr,
+    dplyr (>= 1.1.1),
     flextable,
     glue,
     gt,
@@ -26,7 +26,7 @@ Imports:
     openxlsx,
     purrr,
     readxl,
-    rlang (>= 0.4.11),
+    rlang (>= 1.1.0),
     rstudio.prefs (>= 0.1.9),
     stringr,
     tibble,

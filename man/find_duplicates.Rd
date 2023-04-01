@@ -10,7 +10,8 @@ find_duplicates(x, ..., sort = FALSE, name = "n")
 \item{x}{A data frame, data frame extension (e.g. a tibble), or a
 lazy data frame (e.g. from dbplyr or dtplyr).}
 
-\item{...}{<\code{\link[dplyr:dplyr_data_masking]{data-masking}}> Variables to group by.}
+\item{...}{<\code{\link[rlang:args_data_masking]{data-masking}}> Variables to group
+by.}
 
 \item{sort}{If \code{TRUE}, will show the largest groups at the top.}
 
