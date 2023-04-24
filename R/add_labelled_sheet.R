@@ -54,7 +54,21 @@
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 #'
-add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb, start_row = 1L){
+add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L){
+
+  # check of input workbook in the environment
+  wrkbk <-
+    wrkbk %||%
+    tryCatch(
+      get("wb", envir = rlang::caller_env()),
+      error = function(e) {
+        paste(
+          "The {.code wrkbk} argument has not been specified,",
+          "and the default object {.field wb} does not exist in the calling environment."
+        ) |>
+          cli::cli_abort()
+      }
+    )
 
   # character name of input data
   data_chr <- rlang::as_label(rlang::ensym(data))

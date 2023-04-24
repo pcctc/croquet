@@ -28,7 +28,7 @@
 #' wb <- labelled_sheet(dat_labelled, sheet_name = "example sheet", wrkbk = wb)
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
-labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb, start_row = 1L){
+labelled_sheet <- function(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L){
 
   # ----------------------------------------------------------------------------
   # global settings and preferences - where should these go?
@@ -41,6 +41,20 @@ labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb, start_row = 1L){
   # highlighting option
   #hl <- createStyle(fontColour = "#000000", fgFill = "#FFFFE0")
   # ----------------------------------------------------------------------------
+
+  # check of input workbook in the environment
+  wrkbk <-
+    wrkbk %||%
+    tryCatch(
+      get("wb", envir = rlang::caller_env()),
+      error = function(e) {
+        paste(
+          "The {.code wrkbk} argument has not been specified,",
+          "and the default object {.field wb} does not exist in the calling environment."
+        ) |>
+          cli::cli_abort()
+      }
+    )
 
   # character vector of data name
   data_chr <- rlang::as_label(rlang::ensym(data))
