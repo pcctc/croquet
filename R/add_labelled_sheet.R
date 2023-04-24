@@ -5,11 +5,8 @@
 #' options to sheet with the openxlsx::add functions after executed.
 #'
 #' @param data labelled data to add to sheet. can accept named list or data frame.
-#' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
-#' of input data set
-#' @param wrkbk workbook object, defaults to wb
-#' @param start_row integer row position where Labels are placed, defaults to 1L
-#'
+#' @inheritParams labelled_sheet
+
 #' @return a workbook object
 #' @export
 #'
@@ -54,21 +51,19 @@
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 #'
-add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L){
+add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk, start_row = 1L){
 
-  # check of input workbook in the environment
-  wrkbk <-
-    wrkbk %||%
-    tryCatch(
-      get("wb", envir = rlang::caller_env()),
-      error = function(e) {
-        paste(
-          "The {.code wrkbk} argument has not been specified,",
-          "and the default object {.field wb} does not exist in the calling environment."
-        ) |>
-          cli::cli_abort()
-      }
-    )
+  # check for input workbook in the environment
+  if (missing(wrkbk) && exists("wb", envir = rlang::caller_env())) {
+    wrkbk <- get("wb", envir = rlang::caller_env())
+  }
+  else if (missing(wrkbk)) {
+    paste(
+      "The {.code wrkbk} argument has not been specified,",
+      "and the default object {.field wb} does not exist in the calling environment."
+    ) |>
+      cli::cli_abort()
+  }
 
   # character name of input data
   data_chr <- rlang::as_label(rlang::ensym(data))

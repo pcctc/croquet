@@ -6,9 +6,9 @@
 #' @param data labelled data to add to sheet
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
-#' @param wrkbk workbook name, defaults to wb
+#' @param wrkbk expects a workbook object created from `openxlsx::createWorkbook()`, if not supplied by user, function will search for an object called 'wb' in the calling environment.
 #' @param start_row integer row position where the labels must be placed, `data` is placed at start_row+1, defaults to 1L
-#'
+
 #' @return a workbook object
 #'
 #' @examples
@@ -28,7 +28,7 @@
 #' wb <- labelled_sheet(dat_labelled, sheet_name = "example sheet", wrkbk = wb)
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
-labelled_sheet <- function(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L){
+labelled_sheet <- function(data, sheet_name = NULL, wrkbk, start_row = 1L){
 
   # ----------------------------------------------------------------------------
   # global settings and preferences - where should these go?
@@ -42,19 +42,17 @@ labelled_sheet <- function(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L
   #hl <- createStyle(fontColour = "#000000", fgFill = "#FFFFE0")
   # ----------------------------------------------------------------------------
 
-  # check of input workbook in the environment
-  wrkbk <-
-    wrkbk %||%
-    tryCatch(
-      get("wb", envir = rlang::caller_env()),
-      error = function(e) {
-        paste(
-          "The {.code wrkbk} argument has not been specified,",
-          "and the default object {.field wb} does not exist in the calling environment."
-        ) |>
-          cli::cli_abort()
-      }
-    )
+  # check for input workbook in the environment
+  if (missing(wrkbk) && exists("wb", envir = rlang::caller_env())) {
+    wrkbk <- get("wb", envir = rlang::caller_env())
+  }
+  else if (missing(wrkbk)) {
+    paste(
+      "The {.code wrkbk} argument has not been specified,",
+      "and the default object {.field wb} does not exist in the calling environment."
+    ) |>
+      cli::cli_abort()
+  }
 
   # character vector of data name
   data_chr <- rlang::as_label(rlang::ensym(data))

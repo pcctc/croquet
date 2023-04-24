@@ -4,7 +4,7 @@
 \alias{labelled_sheet}
 \title{A hidden function to add labelled data sheet to an excel workbook through openxlsx}
 \usage{
-labelled_sheet(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L)
+labelled_sheet(data, sheet_name = NULL, wrkbk, start_row = 1L)
 }
 \arguments{
 \item{data}{labelled data to add to sheet}
@@ -12,7 +12,7 @@ labelled_sheet(data, sheet_name = NULL, wrkbk = NULL, start_row = 1L)
 \item{sheet_name}{optional sheet name; if none provided, sheet will be assigned name
 of input data set}
 
-\item{wrkbk}{workbook name, defaults to wb}
+\item{wrkbk}{expects a workbook object created from \code{openxlsx::createWorkbook()}, if not supplied by user, function will search for an object called 'wb' in the calling environment.}
 
 \item{start_row}{integer row position where the labels must be placed, \code{data} is placed at start_row+1, defaults to 1L}
 }
