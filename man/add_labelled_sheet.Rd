@@ -7,7 +7,7 @@
 add_labelled_sheet(data, sheet_name = NULL, wrkbk, start_row = 1L)
 }
 \arguments{
-\item{data}{labelled data to add to sheet. can accept named list or data frame.}
+\item{data}{labelled data to add to sheet}
 
 \item{sheet_name}{optional sheet name; if none provided, sheet will be assigned name
 of input data set}

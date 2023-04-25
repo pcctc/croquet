@@ -4,8 +4,11 @@
 #' and filters. Header styling is applied.  You can add additional styling
 #' options to sheet with the openxlsx::add functions after executed.
 #'
-#' @param data labelled data to add to sheet. can accept named list or data frame.
-#' @inheritParams labelled_sheet
+#' @param data labelled data to add to sheet
+#' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
+#' of input data set
+#' @param wrkbk expects a workbook object created from `openxlsx::createWorkbook()`, if not supplied by user, function will search for an object called 'wb' in the calling environment.
+#' @param start_row integer row position where the labels must be placed, `data` is placed at start_row+1, defaults to 1L
 
 #' @return a workbook object
 #' @export

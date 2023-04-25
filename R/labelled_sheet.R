@@ -8,7 +8,7 @@
 #' of input data set
 #' @param wrkbk expects a workbook object created from `openxlsx::createWorkbook()`, if not supplied by user, function will search for an object called 'wb' in the calling environment.
 #' @param start_row integer row position where the labels must be placed, `data` is placed at start_row+1, defaults to 1L
-
+#' @noRd
 #' @return a workbook object
 #'
 #' @examples
