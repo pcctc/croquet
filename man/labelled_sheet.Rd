@@ -17,7 +17,7 @@ of input data set}
 \item{start_row}{integer row position where the labels must be placed, \code{data} is placed at start_row+1, defaults to 1L}
 }
 \value{
-a workbook object
+a list containing worksheet definition; the function modifies the object passed to the \code{wb} argument.
 }
 \description{
 You can add additional styling options to sheet with the openxlsx::add functions

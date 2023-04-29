@@ -17,7 +17,7 @@ of input data set}
 \item{start_row}{integer row position where Labels are placed, defaults to 1L}
 }
 \value{
-a workbook object
+a list containing worksheet definition; the function modifies the object passed to the \code{wb} argument.
 }
 \description{
 Row 1 contains variable labels; row 2 contains variable names, freeze panes,
@@ -42,8 +42,8 @@ dat1 <- tibble::tibble(
     var_3 = "Variable 3 (date)"
   )
 wb <- createWorkbook()
-add_labelled_sheet(dat1)
-add_labelled_sheet(dat1, sheet_name = "example sheet")
+add_labelled_sheet(data = dat1, wrkbk = wb)
+add_labelled_sheet(data = dat1, sheet_name = "example sheet", wrkbk = wb)
 saveWorkbook(wb, "checkwb.xlsx")
 
 
@@ -61,7 +61,7 @@ dat2 <- tibble::tibble(
 
 out <- tibble::lst(dat1, dat2)
 wb <- createWorkbook()
-add_labelled_sheet(out)
+add_labelled_sheet(data = out, wrkbk = wb)
 saveWorkbook(wb, "checkwb.xlsx")
 }
 

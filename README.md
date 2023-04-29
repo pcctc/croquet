@@ -82,10 +82,10 @@ dat2 <- tibble::tibble(
 wb <- createWorkbook()
 
 # default settings name sheet by name of input data
-add_labelled_sheet(dat1)
+add_labelled_sheet(data = dat1, wrkbk = wb)
 
 # you can rename sheet to something more meaningful
-add_labelled_sheet(dat1, "example sheet")
+add_labelled_sheet(data = dat1, sheet_name = "example sheet", wrkbk = wb)
 
 saveWorkbook(wb, "check-wb-1.xlsx")
 ```
@@ -100,7 +100,7 @@ out <- tibble::lst(dat1, dat2)
 wb <- createWorkbook()
 
 # create labelled sheets from all input data
-add_labelled_sheet(out)
+add_labelled_sheet(data = out, wrkbk = wb)
 
 saveWorkbook(wb, "check-wb-2.xlsx")
 ```

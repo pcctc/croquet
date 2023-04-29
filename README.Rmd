@@ -86,10 +86,10 @@ dat2 <- tibble::tibble(
 wb <- createWorkbook()
 
 # default settings name sheet by name of input data
-add_labelled_sheet(dat1)
+add_labelled_sheet(data = dat1, wrkbk = wb)
 
 # you can rename sheet to something more meaningful
-add_labelled_sheet(dat1, "example sheet")
+add_labelled_sheet(data = dat1, sheet_name = "example sheet", wrkbk = wb)
 
 saveWorkbook(wb, "check-wb-1.xlsx")
 ```
@@ -105,7 +105,7 @@ out <- tibble::lst(dat1, dat2)
 wb <- createWorkbook()
 
 # create labelled sheets from all input data
-add_labelled_sheet(out)
+add_labelled_sheet(data = out, wrkbk = wb)
 
 saveWorkbook(wb, "check-wb-2.xlsx")
 ```
@@ -142,12 +142,3 @@ dat <- read_labelled_sheet(
 knitr::knit_exit()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

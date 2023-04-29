@@ -10,7 +10,7 @@
 #' @param wrkbk workbook object, defaults to wb
 #' @param start_row integer row position where Labels are placed, defaults to 1L
 #'
-#' @return a workbook object
+#' @return a list containing worksheet definition; the function modifies the object passed to the `wb` argument.
 #' @export
 #'
 #' @examples
@@ -31,8 +31,8 @@
 #'     var_3 = "Variable 3 (date)"
 #'   )
 #' wb <- createWorkbook()
-#' add_labelled_sheet(dat1)
-#' add_labelled_sheet(dat1, sheet_name = "example sheet")
+#' add_labelled_sheet(data = dat1, wrkbk = wb)
+#' add_labelled_sheet(data = dat1, sheet_name = "example sheet", wrkbk = wb)
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'
 #'
@@ -50,7 +50,7 @@
 #'
 #' out <- tibble::lst(dat1, dat2)
 #' wb <- createWorkbook()
-#' add_labelled_sheet(out)
+#' add_labelled_sheet(data = out, wrkbk = wb)
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 #'
