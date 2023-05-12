@@ -1,5 +1,7 @@
 # croquet 0.4.0
 
+### Breaking Change
+
 * The labels file in `set_derived_variable_labels()` must now be a CSV with columns `"df_name"`, `"df_label"`, `"var_name"`, and `"var_label"`.
 
 # croquet 0.3.1
