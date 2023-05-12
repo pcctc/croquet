@@ -10,6 +10,14 @@
 ---
 
     Code
+      set_derived_variable_labels(iris2, df_name = "iris2", path = "not_a_real_file.xlsx")
+    Condition
+      Error in `set_derived_variable_labels()`:
+      x The file specified in `path` argument must be a CSV: Excel files no longer accepted.
+
+---
+
+    Code
       set_derived_variable_labels(iris2, "iris2", path = fs::path_package("croquet",
         "derived-variables-example-bad-structure.csv"))
     Condition

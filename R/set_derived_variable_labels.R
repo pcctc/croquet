@@ -19,6 +19,9 @@ set_derived_variable_labels <- function(data, df_name, path, drop = TRUE) {
     required_args <- c("data", "df_name", "path")
     cli::cli_abort(c("x" = "Arguments {.val {required_args}} must be specified."))
   }
+  if (stringr::str_ends(string = path, pattern = "xlsx|xls")) {
+    cli::cli_abort(c("x" = "The file specified in {.code path} argument must be a CSV: Excel files no longer accepted."))
+  }
 
   # import ---------------------------------------------------------------------
   # reading in excel file of Derived Variables

@@ -25,6 +25,15 @@ test_that("set_derived_variable_labels() works", {
   expect_snapshot(
     iris2 |>
       set_derived_variable_labels(
+        df_name = "iris2",
+        path = "not_a_real_file.xlsx"
+      ),
+    error = TRUE
+  )
+
+  expect_snapshot(
+    iris2 |>
+      set_derived_variable_labels(
         "iris2",
         path = fs::path_package("croquet", "derived-variables-example-bad-structure.csv")
       ),
