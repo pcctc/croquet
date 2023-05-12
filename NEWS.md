@@ -1,3 +1,7 @@
+# croquet (development version)
+
+* The labels file in `set_derived_variable_labels()` must now be a CSV with columns `"df_name"`, `"df_label"`, `"var_name"`, and `"var_label"`.
+
 # croquet 0.3.1
 
 * Updated the PCCTC gtsummary theme to place levels and cohort size on separate lines in the headers of `gtsummary::tbl_summary(by=)`. The cohort sizes presented in the header are also now formatted with `gtsummary::style_number()`. (#23)
