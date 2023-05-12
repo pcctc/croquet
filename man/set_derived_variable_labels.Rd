@@ -9,7 +9,8 @@ set_derived_variable_labels(data, df_name, path, drop = TRUE)
 \arguments{
 \item{data}{Data frame}
 
-\item{df_name}{string indicating the name of the data frame to apply labels to}
+\item{df_name}{string indicating the name of the data frame to apply labels to.
+If not specified, we'll do our best to determine the name of the passed data frame.}
 
 \item{path}{Path to CSV file}
 

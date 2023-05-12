@@ -14,6 +14,18 @@ test_that("set_derived_variable_labels() works", {
   expect_equal(attr(iris2_labelled, "label"), "Base R Iris Data Frame")
   expect_equal(names(iris2_labelled), c("Sepal.Length", "Species"))
 
+  # repeating without specifying the df_name argument (to ensure the name can be found)
+  expect_error(
+    iris2_labelled <-
+      iris2 |>
+      set_derived_variable_labels(
+        path = fs::path_package("croquet", "derived-variables-example.csv")
+      ),
+    NA
+  )
+  expect_equal(attr(iris2_labelled, "label"), "Base R Iris Data Frame")
+  expect_equal(names(iris2_labelled), c("Sepal.Length", "Species"))
+
   expect_equal(
     iris2 |>
       set_derived_variable_labels(
@@ -27,8 +39,17 @@ test_that("set_derived_variable_labels() works", {
 
   # expect errors/warnings/notes
   expect_snapshot(
+    iris2 %>%
+      set_derived_variable_labels(
+        path = fs::path_package("croquet", "derived-variables-example.csv")
+      ),
+    error = TRUE
+  )
+
+  expect_snapshot(
     iris2 |>
       set_derived_variable_labels(
+        df_name = letters,
         path = fs::path_package("croquet", "derived-variables-example.csv")
       ),
     error = TRUE
@@ -62,4 +83,13 @@ test_that("set_derived_variable_labels() works", {
       dplyr::as_tibble()
   )
   expect_equal(attr(iris2_labelled2, "label"), "Base R Iris Data Frame")
+
+  expect_snapshot(
+    iris2 |>
+      set_derived_variable_labels(
+        "not_a_data_frame_name",
+        path = fs::path_package("croquet", "derived-variables-example.csv")
+      ),
+    error = TRUE
+  )
 })

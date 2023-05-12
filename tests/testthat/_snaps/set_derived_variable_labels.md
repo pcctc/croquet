@@ -1,11 +1,20 @@
 # set_derived_variable_labels() works
 
     Code
-      set_derived_variable_labels(iris2, path = fs::path_package("croquet",
+      iris2 %>% set_derived_variable_labels(path = fs::path_package("croquet",
         "derived-variables-example.csv"))
     Condition
       Error in `set_derived_variable_labels()`:
-      x Arguments "data", "df_name", and "path" must be specified.
+      x Could not determine the name of the passed data frame. Specify the `set_derived_variable_labels(df_name)` argument.
+
+---
+
+    Code
+      set_derived_variable_labels(iris2, df_name = letters, path = fs::path_package(
+        "croquet", "derived-variables-example.csv"))
+    Condition
+      Error in `set_derived_variable_labels()`:
+      ! The `set_derived_variable_labels(df_name)` argument must be a string.
 
 ---
 
@@ -34,4 +43,14 @@
     Message
       ! Data frame label is not consistent for all rows: "Base R Iris Data Frame" and "Inconsistent DF label".
       i The first label will be used.
+
+---
+
+    Code
+      set_derived_variable_labels(iris2, "not_a_data_frame_name", path = fs::path_package(
+        "croquet", "derived-variables-example.csv"))
+    Condition
+      Error in `set_derived_variable_labels()`:
+      x The data name "not_a_data_frame_name" does not appear in the derived variables file.
+      i Specify one of "iris2"
 

@@ -7,7 +7,8 @@
 #'
 #' @param data Data frame
 #' @param path Path to CSV file
-#' @param df_name string indicating the name of the data frame to apply labels to
+#' @param df_name string indicating the name of the data frame to apply labels to.
+#' If not specified, we'll do our best to determine the name of the passed data frame.
 #' @param drop Logical indicating whether to drop unlabeled variables
 #' @author Daniel D. Sjoberg
 #' @export
@@ -15,9 +16,31 @@
 #' trial %>%
 #'   set_derived_variable_labels("derived_variables_sjoberg.xlsx")
 set_derived_variable_labels <- function(data, df_name, path, drop = TRUE) {
+  # grabbing function call, and trying to parse the passed data object name ----
+  if (missing(df_name)) {
+    df_name <-
+      tryCatch(
+        match.call() |>
+          as.list() |>
+          purrr::pluck("data") |>
+          as.character() |>
+          setdiff("."),
+        error = function(e) NULL
+      )
+
+    if (rlang::is_empty(df_name)) {
+      c("x" = paste("Could not determine the name of the passed data frame.",
+                    "Specify the {.code set_derived_variable_labels(df_name)} argument.")) |>
+        cli::cli_abort()
+    }
+  }
+  if (!rlang::is_string(df_name)) {
+    cli::cli_abort("The {.code set_derived_variable_labels(df_name)} argument must be a string.")
+  }
+
   # check inputs ---------------------------------------------------------------
-  if (missing(data) || missing(df_name) || missing(path)) {
-    required_args <- c("data", "df_name", "path")
+  if (missing(data) || missing(path)) {
+    required_args <- c("data", "path")
     cli::cli_abort(c("x" = "Arguments {.val {required_args}} must be specified."))
   }
   if (stringr::str_ends(string = path, pattern = "xlsx|xls")) {
@@ -26,13 +49,19 @@ set_derived_variable_labels <- function(data, df_name, path, drop = TRUE) {
 
   # import ---------------------------------------------------------------------
   # reading in excel file of Derived Variables
-  df_derived_variables <- readr::read_csv(file = path, show_col_types = FALSE)
+  df_derived_variables <-
+    readr::read_csv(file = path, show_col_types = FALSE)
   required_columns <- c("df_name", "df_label", "var_name", "var_label")
   if (!all(required_columns %in% names(df_derived_variables))) {
     cli::cli_abort(
       c("x" = "CSV file {.path {basename(path)}} is not expected structure.",
         "!" = "Expecting columns {.val {required_columns}}.")
     )
+  }
+  if (!df_name %in% df_derived_variables$df_name) {
+    c("x" = "The data name {.val {df_name}} does not appear in the derived variables file.",
+      "i" = "Specify one of {.val {unique(df_derived_variables$df_name)}}") |>
+      cli::cli_abort()
   }
 
   # subset df_derived_variables ------------------------------------------------
