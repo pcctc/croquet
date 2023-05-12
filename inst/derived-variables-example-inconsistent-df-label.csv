@@ -1,0 +1,3 @@
+﻿df_name,df_label,var_name,var_label
+iris2,Base R Iris Data Frame,Sepal.Length,Sepal Length
+iris2,Inconsistent DF label,Species,Species
