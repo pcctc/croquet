@@ -4,12 +4,12 @@
 #' and filters. Header styling is applied.  You can add additional styling
 #' options to sheet with the openxlsx::add functions after executed.
 #'
-#' @param data labelled data to add to sheet. can accept named list or data frame.
+#' @param data labelled data to add to sheet
 #' @param sheet_name optional sheet name; if none provided, sheet will be assigned name
 #' of input data set
-#' @param wrkbk workbook object, defaults to wb
-#' @param start_row integer row position where Labels are placed, defaults to 1L
-#'
+#' @param wrkbk expects a workbook object created from `openxlsx::createWorkbook()`, if not supplied by user, function will search for an object called 'wb' in the calling environment.
+#' @param start_row integer row position where the labels must be placed, `data` is placed at start_row+1, defaults to 1L
+
 #' @return a workbook object
 #' @export
 #'
@@ -54,7 +54,19 @@
 #' saveWorkbook(wb, "checkwb.xlsx")
 #'}
 #'
-add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk = wb, start_row = 1L){
+add_labelled_sheet <- function(data, sheet_name = NULL, wrkbk, start_row = 1L){
+
+  # check for input workbook in the environment
+  if (missing(wrkbk) && exists("wb", envir = rlang::caller_env())) {
+    wrkbk <- get("wb", envir = rlang::caller_env())
+  }
+  else if (missing(wrkbk)) {
+    paste(
+      "The {.code wrkbk} argument has not been specified,",
+      "and the default object {.field wb} does not exist in the calling environment."
+    ) |>
+      cli::cli_abort()
+  }
 
   # character name of input data
   data_chr <- rlang::as_label(rlang::ensym(data))

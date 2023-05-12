@@ -4,17 +4,17 @@
 \alias{add_labelled_sheet}
 \title{Adds a sheet to an excel workbook with with both variable names and labels.}
 \usage{
-add_labelled_sheet(data, sheet_name = NULL, wrkbk = wb, start_row = 1L)
+add_labelled_sheet(data, sheet_name = NULL, wrkbk, start_row = 1L)
 }
 \arguments{
-\item{data}{labelled data to add to sheet. can accept named list or data frame.}
+\item{data}{labelled data to add to sheet}
 
 \item{sheet_name}{optional sheet name; if none provided, sheet will be assigned name
 of input data set}
 
-\item{wrkbk}{workbook object, defaults to wb}
+\item{wrkbk}{expects a workbook object created from \code{openxlsx::createWorkbook()}, if not supplied by user, function will search for an object called 'wb' in the calling environment.}
 
-\item{start_row}{integer row position where Labels are placed, defaults to 1L}
+\item{start_row}{integer row position where the labels must be placed, \code{data} is placed at start_row+1, defaults to 1L}
 }
 \value{
 a workbook object
