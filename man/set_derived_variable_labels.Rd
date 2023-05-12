@@ -4,24 +4,20 @@
 \alias{set_derived_variable_labels}
 \title{Apply variable labels to data frame}
 \usage{
-set_derived_variable_labels(data, path, sheet = NULL, drop = TRUE)
+set_derived_variable_labels(data, df_name, path, drop = TRUE)
 }
 \arguments{
 \item{data}{Data frame}
 
-\item{path}{Path to Derived Variables xls/xlsx file}
+\item{path}{Path to CSV file}
 
-\item{sheet}{Sheet to read. Either a string (the name of a sheet), or an
-integer (the position of the sheet). Ignored if the sheet is specified via
-\code{range}. If neither argument specifies the sheet, defaults to the first
-sheet.}
-
-\item{drop}{Logical indicating whether to drop unlabelled variables}
+\item{drop}{Logical indicating whether to drop unlabeled variables}
 }
 \description{
-Takes labels from the Derived Variables excel file and applies them to the
+Takes labels from the Derived Variables CSV file and applies them to the
 passed data frame.
-The excel sheet must have columns \code{"varname"} and \code{"label"}.
+The excel sheet must have columns \code{"df_name"}, \code{"df_label"}, \code{"var_name"}, and \code{"var_label"}.
+The returned data frame is also labelled with the value in \code{"df_label"}.
 }
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

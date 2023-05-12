@@ -34,6 +34,7 @@ Imports:
     tidyselect
 Suggests: 
     covr,
+    fs,
     roxygen2,
     tidyverse,
     testthat (>= 3.0.0)
