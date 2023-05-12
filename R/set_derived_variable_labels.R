@@ -7,6 +7,7 @@
 #'
 #' @param data Data frame
 #' @param path Path to CSV file
+#' @param df_name string indicating the name of the data frame to apply labels to
 #' @param drop Logical indicating whether to drop unlabeled variables
 #' @author Daniel D. Sjoberg
 #' @export

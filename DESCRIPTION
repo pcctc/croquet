@@ -25,6 +25,7 @@ Imports:
     magrittr,
     openxlsx,
     purrr,
+    readr,
     readxl,
     rlang (>= 1.1.0),
     rstudio.prefs (>= 0.1.9),
