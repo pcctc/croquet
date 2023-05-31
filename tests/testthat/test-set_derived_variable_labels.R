@@ -107,4 +107,9 @@ test_that("set_derived_variable_labels() works", {
       ),
     error = TRUE
   )
+
+  expect_error(
+    iris2 |> set_derived_variable_labels(),
+    "must be specified"
+  )
 })
