@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">croquet</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="croquet-development-version">croquet (development version)<a class="anchor" aria-label="anchor" href="#croquet-development-version"></a></h2>
-</div>
+<ul><li><p>When applying a column label with <code><a href="../reference/set_derived_variable_labels.html">set_derived_variable_labels()</a></code>, the function will report on any columns whose names end in <code>.x</code> or <code>.y</code>, as these are likely the result of a merge error.</p></li>
+<li><p>When applying a column label with <code><a href="../reference/set_derived_variable_labels.html">set_derived_variable_labels()</a></code>, the function now reports which columns are being dropped. The report is by the case of the variables, e.g. all lowercase variables are reported together.</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="croquet-040">croquet 0.4.0<a class="anchor" aria-label="anchor" href="#croquet-040"></a></h2>
 <div class="section level4">
