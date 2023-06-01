@@ -76,6 +76,14 @@ set_derived_variable_labels <- function(data, df_name, path, drop = TRUE) {
     )
   }
 
+  # messaging about potential errors -------------------------------------------
+  colnames_bad_merge <- colnames(data) |> purrr::keep(~grepl(pattern = "\\.x$|\\.y$", x = .))
+  if (!rlang::is_empty(colnames_bad_merge)) {
+    cli::cli_warn(
+      c("!" = "The following columns end in {.val .x} or {.val .y}, which is likely an error: {.val {colnames_bad_merge}}")
+    )
+  }
+
   # assign variable labels -----------------------------------------------------
   # convert labels into named list
   lst_variable_labels <-
@@ -88,6 +96,36 @@ set_derived_variable_labels <- function(data, df_name, path, drop = TRUE) {
   # drop -----------------------------------------------------------------------
   # dropping unlabelled data (ie variables not specified in file)
   if (isTRUE(drop)) {
+    colnames_drop_lowercase <-
+      dplyr::select(
+        data,
+        all_lowercase(),
+        -dplyr::any_of(names(lst_variable_labels))
+      ) |>
+      names()
+    colnames_drop_uppercase <-
+      dplyr::select(
+        data,
+        all_uppercase(),
+        -dplyr::any_of(names(lst_variable_labels))
+      ) |>
+      names()
+    colnames_drop_other <-
+      dplyr::select(
+        data,
+        -dplyr::any_of(c(names(lst_variable_labels), colnames_drop_lowercase, colnames_drop_uppercase))
+      ) |>
+      names()
+    if (!rlang::is_empty(colnames_drop_lowercase)) {
+      cli::cli_inform(c("i" = "The following {.strong lowercase} columns have been removed: {.val {colnames_drop_lowercase}}"))
+    }
+    if (!rlang::is_empty(colnames_drop_uppercase)) {
+      cli::cli_inform(c("i" = "The following {.strong uppercase} columns have been removed: {.val {colnames_drop_uppercase}}"))
+    }
+    if (!rlang::is_empty(colnames_drop_other)) {
+      cli::cli_inform(c("i" = "The following {.strong  mixed-case} columns have been removed: {.val {colnames_drop_other}}"))
+    }
+
     data <- dplyr::select(data, dplyr::all_of(names(lst_variable_labels)))
   }
 

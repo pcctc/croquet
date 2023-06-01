@@ -39,6 +39,21 @@ test_that("set_derived_variable_labels() works", {
 
   # expect errors/warnings/notes
   expect_snapshot(
+    iris2[1:3,] %>%
+      dplyr::mutate(
+        UPPERCASE_VAR = TRUE,
+        lowercase_var = TRUE,
+        MiXeDcase_vAr = TRUE,
+        bad_merge_var.x = TRUE,
+        bad_merge_var.y = TRUE
+      ) %>%
+      set_derived_variable_labels(
+        df_name = "iris2",
+        path = fs::path_package("croquet", "derived-variables-example.csv")
+      )
+  )
+
+  expect_snapshot(
     iris2 %>%
       set_derived_variable_labels(
         path = fs::path_package("croquet", "derived-variables-example.csv")
@@ -91,5 +106,10 @@ test_that("set_derived_variable_labels() works", {
         path = fs::path_package("croquet", "derived-variables-example.csv")
       ),
     error = TRUE
+  )
+
+  expect_error(
+    iris2 |> set_derived_variable_labels(),
+    "must be specified"
   )
 })

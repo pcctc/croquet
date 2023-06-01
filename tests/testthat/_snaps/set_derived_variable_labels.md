@@ -1,6 +1,26 @@
 # set_derived_variable_labels() works
 
     Code
+      iris2[1:3, ] %>% dplyr::mutate(UPPERCASE_VAR = TRUE, lowercase_var = TRUE,
+        MiXeDcase_vAr = TRUE, bad_merge_var.x = TRUE, bad_merge_var.y = TRUE) %>%
+        set_derived_variable_labels(df_name = "iris2", path = fs::path_package(
+          "croquet", "derived-variables-example.csv"))
+    Condition
+      Warning:
+      ! The following columns end in ".x" or ".y", which is likely an error: "bad_merge_var.x" and "bad_merge_var.y"
+    Message
+      i The following lowercase columns have been removed: "lowercase_var", "bad_merge_var.x", and "bad_merge_var.y"
+      i The following uppercase columns have been removed: "UPPERCASE_VAR"
+      i The following mixed-case columns have been removed: "Sepal.Width", "Petal.Length", "Petal.Width", and "MiXeDcase_vAr"
+    Output
+        Sepal.Length Species
+      1          5.1  setosa
+      2          4.9  setosa
+      3          4.7  setosa
+
+---
+
+    Code
       iris2 %>% set_derived_variable_labels(path = fs::path_package("croquet",
         "derived-variables-example.csv"))
     Condition
@@ -43,6 +63,7 @@
     Message
       ! Data frame label is not consistent for all rows: "Base R Iris Data Frame" and "Inconsistent DF label".
       i The first label will be used.
+      i The following mixed-case columns have been removed: "Sepal.Width", "Petal.Length", and "Petal.Width"
 
 ---
 
