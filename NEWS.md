@@ -1,5 +1,9 @@
 # croquet (development version)
 
+* When applying a column label with `set_derived_variable_labels()`, the function will report on any columns whose names end in `.x` or `.y`, as these are likely the result of a merge error.
+
+* When applying a column label with `set_derived_variable_labels()`, the function now reports which columns are being dropped. The report is by the case of the variables, e.g. all lowercase variables are reported together. 
+
 # croquet 0.4.0
 
 ### Breaking Change
