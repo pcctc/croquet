@@ -1,6 +1,6 @@
 # croquet (development version)
 
-* Update dependency to gtsummary 4.0.0
+* Update dependency to gtsummary 2.0.0
 
 * When applying a column label with `set_derived_variable_labels()`, the function will report on any columns whose names end in `.x` or `.y`, as these are likely the result of a merge error.
 
