@@ -10,11 +10,10 @@
 #' @param df_name string indicating the name of the data frame to apply labels to.
 #' If not specified, we'll do our best to determine the name of the passed data frame.
 #' @param drop Logical indicating whether to drop unlabeled variables
-#' @author Daniel D. Sjoberg
 #' @export
 #' @examplesIf FALSE
 #' trial %>%
-#'   set_derived_variable_labels("derived_variables_sjoberg.xlsx")
+#'   set_derived_variable_labels("derived_variables_sjoberg.csv")
 set_derived_variable_labels <- function(data, df_name, path, drop = TRUE) {
   # grabbing function call, and trying to parse the passed data object name ----
   if (missing(df_name)) {
