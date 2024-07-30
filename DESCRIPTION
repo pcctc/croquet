@@ -19,7 +19,7 @@ Imports:
     flextable,
     glue,
     gt,
-    gtsummary (>= 1.7.0),
+    gtsummary (>= 2.0.0),
     here,
     labelled,
     magrittr,
