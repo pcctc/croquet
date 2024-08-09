@@ -25,9 +25,6 @@ The returned data frame is also labelled with the value in \code{"df_label"}.
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 trial \%>\%
-  set_derived_variable_labels("derived_variables_sjoberg.xlsx")
+  set_derived_variable_labels("derived_variables_sjoberg.csv")
 \dontshow{\}) # examplesIf}
-}
-\author{
-Daniel D. Sjoberg
 }

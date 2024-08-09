@@ -7,7 +7,8 @@
 theme_gtsummary_pcctc(font_size = NULL)
 }
 \arguments{
-\item{font_size}{Numeric font size for compact theme.
+\item{font_size}{(scaler \code{numeric})\cr
+Numeric font size for compact theme.
 Default is 13 for gt tables, and 8 for all other output types}
 }
 \description{
