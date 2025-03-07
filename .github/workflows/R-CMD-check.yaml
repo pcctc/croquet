@@ -53,14 +53,6 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Install remotes
-        run: |
-          Rscript -e "install.packages('remotes', repos='https://cloud.r-project.org/')"
-
-      - name: Install labelled
-        run: |
-          Rscript -e "remotes::install_github('larmarange/labelled', ref = '7cb8241')"
-
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true

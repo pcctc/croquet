@@ -20,7 +20,7 @@ Imports:
     gt,
     gtsummary (>= 2.0.0),
     here,
-    labelled (>= 2.14.0.9000),
+    labelled,
     magrittr,
     openxlsx,
     purrr,
@@ -38,8 +38,7 @@ Suggests:
     roxygen2,
     tidyverse,
     testthat (>= 3.0.0)
-Remotes:
-    larmarange/labelled#172
+Remotes: larmarange/labelled@7cb8241
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
