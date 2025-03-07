@@ -1,6 +1,8 @@
-# croquet 0.4.1
+# croquet (development version)
 
 * Fixed a bug in `set_derived_variable_labels()` due to package updates in the {[labelled](https://larmarange.github.io/labelled/)} package [version 0.2.14](https://larmarange.github.io/labelled/news/index.html#labelled-2140). Minimum required version of the labelled package has been increased to resolve this issue.
+
+* Removed a dependency for the {`broom.helpers`} package as it was causing an error in `get_unique()` during the CMD check due to a defunct function.
 
 * Update dependency to gtsummary 2.0.0
 

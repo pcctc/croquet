@@ -31,8 +31,9 @@
 get_unique <- function(data, var, drop_na = TRUE, keep_fct_levels = TRUE){
 
   var <-
-    broom.helpers::.select_to_varnames({{ var }}, data = data,
-                        arg_name = "var", select_single = TRUE)
+    data |>
+    dplyr::select({{ var }}) |>
+    names()
 
   # list to rename variables----------------------------------------------------
   lst_name_recode <-
