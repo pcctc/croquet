@@ -1,4 +1,6 @@
-# croquet (development version)
+# croquet 0.4.1
+
+* Fixed a bug in `set_derived_variable_labels()` due to package updates in the {[labelled](https://larmarange.github.io/labelled/)} package [version 0.2.14](https://larmarange.github.io/labelled/news/index.html#labelled-2140). Minimum required version of the labelled package has been increased to resolve this issue.
 
 * Update dependency to gtsummary 2.0.0
 
