@@ -53,7 +53,7 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-   - name: Install remotes
+      - name: Install remotes
         run: |
           Rscript -e "install.packages('remotes', repos='https://cloud.r-project.org/')"
 
