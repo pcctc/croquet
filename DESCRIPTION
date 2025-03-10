@@ -38,7 +38,7 @@ Suggests:
     roxygen2,
     tidyverse,
     testthat (>= 3.0.0)
-Remotes: larmarange/labelled@7cb8241
+Remotes: larmarange/labelled
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
