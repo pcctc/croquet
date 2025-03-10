@@ -1,5 +1,10 @@
-# croquet (development version)
+# croquet 0.4.0.9002 (development version)
 
+* Fixed a bug in `set_derived_variable_labels()` due to package updates in the {[labelled](https://larmarange.github.io/labelled/)} package [version 0.2.14](https://larmarange.github.io/labelled/news/index.html#labelled-2140). Minimum required version of the labelled package has been increased to resolve this issue.
+
+* Removed a dependency for the {`broom.helpers`} package as it was causing an error in `get_unique()` during the CMD check due to a defunct function.
+
+# croquet 0.4.0.9001 (development version)
 * Update dependency to gtsummary 2.0.0
 
 * When applying a column label with `set_derived_variable_labels()`, the function will report on any columns whose names end in `.x` or `.y`, as these are likely the result of a merge error.

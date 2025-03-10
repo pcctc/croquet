@@ -1,6 +1,6 @@
 Package: croquet
 Title: Miscellaneous Operations for PCCTC
-Version: 0.4.0.9001
+Version: 0.4.0.9002
 Authors@R: c(
     person("Shannon", "Pileggi", , "pileggis@mskcc.org", role = c("aut", "cre")),
     person("Travis", "Gerke", , "gerket@mskcc.org", role = "aut")
@@ -13,7 +13,6 @@ BugReports: https://github.com/pcctc/croquet/issues
 Depends: 
     R (>= 4.1)
 Imports: 
-    broom.helpers,
     cli,
     dplyr (>= 1.1.1),
     flextable,
@@ -39,6 +38,7 @@ Suggests:
     roxygen2,
     tidyverse,
     testthat (>= 3.0.0)
+Remotes: larmarange/labelled@7cb8241
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
