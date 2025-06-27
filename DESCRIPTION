@@ -1,6 +1,6 @@
 Package: croquet
 Title: Miscellaneous Operations for PCCTC
-Version: 0.4.0.9002
+Version: 0.4.1
 Authors@R: c(
     person("Shannon", "Pileggi", , "pileggis@mskcc.org", role = c("aut", "cre")),
     person("Travis", "Gerke", , "gerket@mskcc.org", role = "aut")
@@ -20,7 +20,7 @@ Imports:
     gt,
     gtsummary (>= 2.0.0),
     here,
-    labelled,
+    labelled (>= 2.14.1),
     magrittr,
     openxlsx,
     purrr,
@@ -38,7 +38,6 @@ Suggests:
     roxygen2,
     tidyverse,
     testthat (>= 3.0.0)
-Remotes: larmarange/labelled
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
